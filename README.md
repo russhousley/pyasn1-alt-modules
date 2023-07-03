@@ -15,7 +15,7 @@ longer being maintained.  As a result, the `pyasn1-alt-modules` package was
 created to share new module developments.  Previous modules are included in
 the `pyasn1-alt-modules` package so that both do not need to be installed.
 
-However, the tools directory of the `pyasn1-modules` package in not included.
+However, the tools directory of the `pyasn1-modules` package is not included.
 
 If ASN.1 module you need is not present in this collection, try using
 [Asn1ate](https://github.com/kimgr/asn1ate) tool that compiles (some)
@@ -30,5 +30,5 @@ If something does not work as expected,
 Additional module contributions are welcome via GitHub pull requests.
 
 Copyright (c) 2005-2020, [Ilya Etingof](mailto:etingof@gmail.com).<br/>
-Copyright (c) 2021-2022, Vigil Security, LLC, (contact [Russ Housley](mailto:housley@vigilsec.com))<br/>
+Copyright (c) 2021-2023, Vigil Security, LLC, (contact [Russ Housley](mailto:housley@vigilsec.com))<br/>
 All rights reserved.
