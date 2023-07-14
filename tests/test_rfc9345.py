@@ -63,7 +63,7 @@ y5S4RfWHIIPjbw==
 
         found = False
         for extn in asn1Object['tbsCertificate']['extensions']:
-            if extn['extnID'] == rfc9345.id_ce_delegationUsage:
+            if extn['extnID'] == rfc9345.id_pe_delegationUsage:
                 found = True
                 self.assertEqual(str2octs('\x05\x00'), extn['extnValue'])
 
@@ -81,7 +81,7 @@ y5S4RfWHIIPjbw==
 
         found = False
         for extn in asn1Object['tbsCertificate']['extensions']:
-            if extn['extnID'] == rfc9345.id_ce_delegationUsage:
+            if extn['extnID'] == rfc9345.id_pe_delegationUsage:
                 found = True
                 extnValue, rest = der_decoder(extn['extnValue'],
                     asn1Spec=certificateExtensionsMap[extn['extnID']])

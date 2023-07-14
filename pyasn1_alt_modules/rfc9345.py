@@ -5,7 +5,7 @@
 # Copyright (c) 2023, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
-# Delegated Credentials for TLS
+# Delegated Credentials for TLS and DTLS
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc9345.txt
@@ -24,13 +24,13 @@ class DelegationUsage(univ.Null):
 
 id_cloudflare = univ.ObjectIdentifier((1, 3, 6, 1, 4, 1, 44363,))
 
-id_ce_delegationUsage = id_cloudflare + (44,)
+id_pe_delegationUsage = id_cloudflare + (44,)
 
 
 # Update the Certificate Extension Map
 
 _certificateExtensionsMapUpdate = {
-    id_ce_delegationUsage: DelegationUsage(),
+    id_pe_delegationUsage: DelegationUsage(),
 }
 
 certificateExtensionsMap.update(_certificateExtensionsMapUpdate)
