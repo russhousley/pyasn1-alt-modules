@@ -9,6 +9,7 @@ Revision 0.4.3, released <TBD>
 - Added RFC4366 providing PkiPath as used in TLS Extensions
 - Added RFC9399 providing Logotypes in X.509 Certificates
 - Dropped RFC5794 because the support for RELATIVE-OID is too fragile
+- Added RFC9480 providing Certificate Management Protocol (CMP) updates
 
 Revision 0.4.2, released 09-01-2023
 -----------------------------------
