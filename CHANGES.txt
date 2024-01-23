@@ -10,7 +10,8 @@ Revision 0.4.3, released <TBD>
 - Added RFC9399 providing Logotypes in X.509 Certificates
 - Dropped RFC5794 because the support for RELATIVE-OID is too fragile
 - Added RFC9480 providing Certificate Management Protocol (CMP) updates
-- Added RFC9481 providing Certificate Management Protocol (CMP) algorithms
+- Added RFC9481 providing Certificate Management Protocol (CMP) algorithms.
+- Added size constraint to policyQualifiers field of PolicyInformation to align with RFC 5280 definition
 
 Revision 0.4.2, released 09-01-2023
 -----------------------------------
