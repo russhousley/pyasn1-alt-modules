@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley with minor assistance from asn1ate v.0.6.0.
 #
-# Copyright (c) 2021, Vigil Security, LLC
+# Copyright (c) 2021-2024, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
 #
 # Updates to the Certificate Management Protocol (CMP)
