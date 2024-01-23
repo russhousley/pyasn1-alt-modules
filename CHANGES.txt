@@ -12,6 +12,7 @@ Revision 0.4.3, released <TBD>
 - Added RFC9480 providing Certificate Management Protocol (CMP) updates
 - Added RFC9481 providing Certificate Management Protocol (CMP) algorithms
 - Added size constraint to policyQualifiers field of PolicyInformation to align with RFC 5280 definition
+- Added RFC9509 providing Extended Key Usage (EKU) for 5G Network Functions
 
 Revision 0.4.2, released 09-01-2023
 -----------------------------------
