@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2023, Vigil Security, LLC
+# Copyright (c) 2023-2024, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # GOST R 34.10-2012 Algorithm for IKEv2
