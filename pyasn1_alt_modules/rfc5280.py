@@ -1352,7 +1352,7 @@ class PolicyInformation(univ.Sequence):
 
 PolicyInformation.componentType = namedtype.NamedTypes(
     namedtype.NamedType('policyIdentifier', CertPolicyId()),
-    namedtype.OptionalNamedType('policyQualifiers', univ.SequenceOf(componentType=PolicyQualifierInfo()))
+    namedtype.OptionalNamedType('policyQualifiers', univ.SequenceOf(componentType=PolicyQualifierInfo()).subtype(subtypeSpec=constraint.ValueSizeConstraint(1, MAX)))
 )
 
 
