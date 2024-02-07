@@ -5,6 +5,7 @@
 # Modified by Russ Housley to add WithComponentsConstraints to
 #   enforce the requirements that are indicated in comments.
 # Modified by Russ Housley to include the opentypemap manager.
+# Modified by CBonnell to align the SemanticsInformation definition with https://www.rfc-editor.org/errata/eid7802
 #
 # Copyright (c) 2019-2024, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
@@ -158,14 +159,14 @@ class QCStatements(univ.SequenceOf):
 
 class SemanticsInformation(univ.Sequence):
     componentType = namedtype.NamedTypes(
-        namedtype.OptionalNamedType('semanticsIndentifier',
+        namedtype.OptionalNamedType('semanticsIdentifier',
             univ.ObjectIdentifier()),
         namedtype.OptionalNamedType('nameRegistrationAuthorities',
             NameRegistrationAuthorities())
     )
     subtypeSpec = constraint.ConstraintsUnion(
         constraint.WithComponentsConstraint(
-            ('semanticsIndentifier', constraint.ComponentPresentConstraint())),
+            ('semanticsIdentifier', constraint.ComponentPresentConstraint())),
         constraint.WithComponentsConstraint(
             ('nameRegistrationAuthorities', constraint.ComponentPresentConstraint()))
     )
