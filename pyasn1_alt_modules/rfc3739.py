@@ -5,7 +5,8 @@
 # Modified by Russ Housley to add WithComponentsConstraints to
 #   enforce the requirements that are indicated in comments.
 # Modified by Russ Housley to include the opentypemap manager.
-# Modified by CBonnell to align the SemanticsInformation definition with https://www.rfc-editor.org/errata/eid7802
+# Modified by CBonnell to align the SemanticsInformation
+#   definition with https://www.rfc-editor.org/errata/eid7802.
 #
 # Copyright (c) 2019-2024, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
@@ -14,6 +15,7 @@
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc3739.txt
+# https://www.rfc-editor.org/errata/eid7802
 #
 
 from pyasn1.type import char
