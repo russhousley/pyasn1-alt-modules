@@ -8,7 +8,7 @@ Alternative ASN.1 modules for pyasn1
 The `pyasn1-alt-modules` package contains a collection of
 [ASN.1](https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-X.208-198811-W!!PDF-E&type=items)
 data structures expressed as Python classes based on [pyasn1](https://github.com/etingof/pyasn1)
-data model.
+data model. Maintenance of pyasn1 has shifted to [pyasn1-maint](https://github.com/pyasn1/pyasn1).
 
 It seems that [pyasn1-modules](https://github.com/etingof/pyasn1-modules) is no
 longer being maintained.  As a result, the `pyasn1-alt-modules` package was
@@ -25,7 +25,7 @@ Feedback
 --------
 
 If something does not work as expected, 
-[open an issue](https://github.com/russhousley/pyasn1-alt-modules/issues) at GitHub.
+[open an issue](https://github.com/russhousley/pyasn1-alt-modules/issues) on GitHub.
  
 Additional module contributions are welcome via GitHub pull requests.
 
