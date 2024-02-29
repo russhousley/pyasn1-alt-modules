@@ -1,6 +1,7 @@
 Revision 0.4.4, released ??-??-2024
 -----------------------------------
-Added support for Python 3.12, and dropped support for Python 3.5.
+- Added support for Python 3.12, and dropped support for Python 3.5.
+- Added RFC9548 for Generating Transport Key Containers Using the GOST Algorithms
 
 Revision 0.4.3, released 08-02-2024
 -----------------------------------
