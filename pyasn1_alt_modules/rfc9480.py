@@ -2,8 +2,9 @@
 # This file is part of pyasn1_alt_modules software.
 #
 # Created by Russ Housley with minor assistance from asn1ate v.0.6.0.
+# Modified by Russ Housley to make InfoTypeAndValue['infoType'] optional.
 #
-# Copyright (c) 2021-2024, Vigil Security, LLC
+# Copyright (c) 2021, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
 #
 # Updates to the Certificate Management Protocol (CMP)
@@ -143,7 +144,7 @@ RevReqContent = rfc4210.RevReqContent
 class InfoTypeAndValue(univ.Sequence):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('infoType', univ.ObjectIdentifier()),
-        namedtype.NamedType('infoValue', univ.Any(),
+        namedtype.OptionalNamedType('infoValue', univ.Any(),
             openType=opentype.OpenType('infoType', cmpInfoTypeAndValueMap))
     )
 

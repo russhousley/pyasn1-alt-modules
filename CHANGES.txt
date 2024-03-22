@@ -3,6 +3,7 @@ Revision 0.4.4, released ??-??-2024
 - Added support for Python 3.12, and dropped support for Python 3.5.
 - Added RFC9548 for Generating Transport Key Containers Using the GOST Algorithms
 - Added RFC8964 for Online Certificate Status Protocol (OCSP) with Nonce constraints
+- Modified RFC9480 (CMP updates) to make InfoTypeAndValue['infoType'] optional
 
 Revision 0.4.3, released 08-02-2024
 -----------------------------------
