@@ -3,8 +3,9 @@
 #
 # Created by Russ Housley with minor assistance from asn1ate v.0.6.0.
 # Modified by Russ Housley to make InfoTypeAndValue['infoType'] optional.
+# Modified by Russ Housley to update the algorithmIdentifierMap.
 #
-# Copyright (c) 2021, Vigil Security, LLC
+# Copyright (c) 2021-2024, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
 #
 # Updates to the Certificate Management Protocol (CMP)
@@ -29,6 +30,8 @@ from pyasn1_alt_modules import rfc5280
 from pyasn1_alt_modules import rfc5652
 from pyasn1_alt_modules import rfc6402
 from pyasn1_alt_modules import opentypemap
+
+algorithmIdentifierMap = opentypemap.get('algorithmIdentifierMap')
 
 cmpInfoTypeAndValueMap = opentypemap.get('cmpInfoTypeAndValueMap')
 
@@ -709,6 +712,16 @@ _cmsAttributesMapUpdate = {
 }
 
 cmsAttributesMap.update(_cmsAttributesMapUpdate)
+
+
+# Update the Algorithm Identifier map
+
+_algorithmIdentifierMapUpdate = {
+    id_PasswordBasedMac: PBMParameter(),
+    id_DHBasedMac: DHBMParameter(),
+}
+
+algorithmIdentifierMap.update(_algorithmIdentifierMapUpdate)
 
 
 # Since pyasn1 does not naturally handle recursive definitions, this hack:
