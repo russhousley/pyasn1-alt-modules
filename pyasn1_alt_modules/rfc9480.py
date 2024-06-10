@@ -4,6 +4,7 @@
 # Created by Russ Housley with minor assistance from asn1ate v.0.6.0.
 # Modified by Russ Housley to make InfoTypeAndValue['infoType'] optional.
 # Modified by Russ Housley to update the algorithmIdentifierMap.
+# Modified bt Russ Housley to correct typo in SignKeyPairTypesValue.
 #
 # Copyright (c) 2021-2024, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
@@ -540,7 +541,7 @@ class CAProtEncCertValue(CMPCertificate):
 
 id_it_signKeyPairTypes = id_it + (2,)
 
-class SignKeyPairTypesValueclass(univ.SequenceOf):
+class SignKeyPairTypesValue(univ.SequenceOf):
     componentType = AlgorithmIdentifier()
 
 
@@ -678,7 +679,7 @@ class CRLsValue(univ.SequenceOf):
 
 _cmpInfoTypeAndValueMapUpdate = {
     id_it_caProtEncCert: CAProtEncCertValue(),
-    id_it_signKeyPairTypes: SignKeyPairTypesValueclass(),
+    id_it_signKeyPairTypes: SignKeyPairTypesValue(),
     id_it_encKeyPairTypes: EncKeyPairTypesValue(),
     id_it_preferredSymmAlg: PreferredSymmAlgValue(),
     id_it_caKeyUpdateInfo: CAKeyUpdateInfoValue(),
