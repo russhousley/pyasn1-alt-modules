@@ -20,8 +20,8 @@ from pyasn1_alt_modules import rfc8708
 
 class HashSigPublicKeyTestCase(unittest.TestCase):
     public_key_pem_text = """\
-MFAwDQYLKoZIhvcNAQkQAxEDPwAEPAAAAAIAAAAGAAAAA9CPq9SiCR/wqMtO2DTn
-RTQypYiFzZugQxI1Rmv/llHGySEkQE1F+lPPFhwo8a1ajg==
+ME4wDQYLKoZIhvcNAQkQAxEDPQAAAAABAAAABQAAAAR05HOoI6Zqfp+lRaj6Y8b7
+F4+v/ijRgtOVkj754l+SIFYACeQ2+Tmo6o3neQJhqEI=
 """
 
     def setUp(self):
