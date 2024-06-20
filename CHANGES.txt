@@ -4,6 +4,7 @@ Revision 0.4.5, released XX-XX-2024
 - Added RFC9582 for RPKI Route Origin Authorizations (ROAs)
 - Added RFC9579 for Use of PBMAC1 in the PKCS #12 Syntax
 - Improve RFC9480 by updating the algorithm identifier map and fix typo
+- Improve RFC8708 by addressing errata eid7963, which only changes a comment
 
 Revision 0.4.4, released 03-22-2024
 -----------------------------------

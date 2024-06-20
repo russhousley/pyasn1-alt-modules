@@ -9,6 +9,7 @@
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc8708.txt
+# https://www.rfc-editor.org/errata/eid7963
 
 
 from pyasn1.type import univ
@@ -38,5 +39,5 @@ class HSS_LMS_HashSig_PublicKey(univ.OctetString):
 
 pk_HSS_LMS_HashSig = rfc5280.SubjectPublicKeyInfo()
 pk_HSS_LMS_HashSig['algorithm'] = sa_HSS_LMS_HashSig
-# pk_HSS_LMS_HashSig['subjectPublicKey'] CONTAINS a
-#     DER-encoded HSS_LMS_HashSig_PublicKey
+# pk_HSS_LMS_HashSig['subjectPublicKey'] CONTAINS the
+#     HSS/LMS public key without any ASN.1 encoding
