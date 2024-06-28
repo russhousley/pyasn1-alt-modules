@@ -6,6 +6,7 @@
 # Modified by Russ Housley to add a maps for CMC Control Attributes
 #   and CMC Content Types for use with opentypes.
 # Modified by Russ Housley to include the opentypemap manager.
+# Modified by Russ Housley for errata 3943, 5931, and 6571.
 #
 # Copyright (c) 2005-2020, Ilya Etingof <etingof@gmail.com>
 # Copyright (c) 2021-2024, Vigil Security, LLC
@@ -15,6 +16,9 @@
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc6402.txt
+# https://www.rfc-editor.org/errata/eid3943
+# https://www.rfc-editor.org/errata/eid5931
+# https://www.rfc-editor.org/errata/eid6571
 #
 from pyasn1.type import char
 from pyasn1.type import constraint
@@ -57,9 +61,11 @@ class ChangeSubjectName(univ.Sequence):
     pass
 
 
+# https://www.rfc-editor.org/errata/eid3943
 ChangeSubjectName.componentType = namedtype.NamedTypes(
     namedtype.OptionalNamedType('subject', rfc5280.Name()),
-    namedtype.OptionalNamedType('subjectAlt', rfc5280.GeneralNames())
+    namedtype.OptionalNamedType('subjectAlt', rfc5280.GeneralNames().subtype(
+        implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 1)))
 )
 
 
@@ -159,7 +165,8 @@ CMCStatusInfoV2.componentType = namedtype.NamedTypes(
                     componentType=namedtype.NamedTypes(
                         namedtype.NamedType('failInfoOID', univ.ObjectIdentifier()),
                         namedtype.NamedType('failInfoValue', AttributeValue()))
-                    )
+                    ).subtype(implicitTag=tag.Tag(
+                        tag.tagClassContext, tag.tagFormatConstructed, 1))
                 )
             )
         )
@@ -501,7 +508,8 @@ class ExtensionReq(univ.SequenceOf):
 ExtensionReq.componentType = rfc5280.Extension()
 ExtensionReq.sizeSpec = constraint.ValueSizeConstraint(1, MAX)
 
-id_kp_cmcArchive = _buildOid(rfc5280.id_kp, 28)
+# https://www.rfc-editor.org/errata/eid5931
+id_kp_cmcArchive = _buildOid(rfc5280.id_kp, 29)
 
 id_cmc_publishCert = _buildOid(id_cmc, 30)
 
