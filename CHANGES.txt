@@ -8,6 +8,7 @@ Revision 0.4.5, released XX-XX-2024
 - Added RFC9608 for the noRevAvail Certificate Extension
 - Improve RFC6401 by addressing errata eid3943, eid5931, and eid6571
 - Added RFC9629 for CMS KEMRecipientInfo
+- Added RFC9654 for Online Certificate Status Protocol (OCSP) Nonce Extension
 
 Revision 0.4.4, released 03-22-2024
 -----------------------------------
