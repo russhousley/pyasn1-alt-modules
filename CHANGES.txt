@@ -1,5 +1,6 @@
-Revision 0.4.5, released XX-XX-2024
+Revision 0.4.5, released 28-08-2024
 -----------------------------------
+- Dropped support for EOL Python 2.7, 3.6, and 3.7
 - Added RFC9598 for Internationalized Email Addresses in X.509 Certificates
 - Added RFC9582 for RPKI Route Origin Authorizations (ROAs)
 - Added RFC9579 for Use of PBMAC1 in the PKCS #12 Syntax
