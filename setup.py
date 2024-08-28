@@ -31,38 +31,26 @@ Intended Audience :: Telecommunications Industry
 License :: OSI Approved :: BSD License
 Natural Language :: English
 Operating System :: OS Independent
-Programming Language :: Python :: 2
-Programming Language :: Python :: 2.7
 Programming Language :: Python :: 3
-Programming Language :: Python :: 3.6
-Programming Language :: Python :: 3.7
 Programming Language :: Python :: 3.8
 Programming Language :: Python :: 3.9
 Programming Language :: Python :: 3.10
 Programming Language :: Python :: 3.11
 Programming Language :: Python :: 3.12
 Topic :: Communications
-Topic :: System :: Monitoring
-Topic :: System :: Networking :: Monitoring
 Topic :: Software Development :: Libraries :: Python Modules
 """
-
 
 def howto_install_setuptools():
     print("""
    Error: You need setuptools Python package!
 
-   It's very easy to install it, just type (as root on Linux):
-
-   wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
-   python ez_setup.py
-
-   Then you could make eggs from this package.
+   It's very easy to install it; see https://pypi.org/project/ez_setup/.
 """)
 
 
-if sys.version_info[:2] < (2, 7):
-    print("ERROR: this package requires Python 2.7 or later!")
+if sys.version_info[:2] < (3, 8):
+    print("ERROR: this package requires Python 3.8 or later!")
     sys.exit(1)
 
 try:
@@ -99,7 +87,7 @@ params.update(
      'classifiers': [x for x in classifiers.split('\n') if x],
      'license': 'BSD-2-Clause',
      'packages': ['pyasn1_alt_modules'],
-     'python_requires': '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*'})
+     'python_requires': '>=3.8'})
 
 class PyTest(Command):
     user_options = []
