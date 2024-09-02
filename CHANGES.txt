@@ -1,5 +1,6 @@
-Revision 0.4.5, released 28-08-2024
+Revision 0.4.5, released 02-09-2024
 -----------------------------------
+- Require pyasn1 0.5.0 to force people to the maintained version
 - Dropped support for EOL Python 2.7, 3.6, and 3.7
 - Added RFC9598 for Internationalized Email Addresses in X.509 Certificates
 - Added RFC9582 for RPKI Route Origin Authorizations (ROAs)

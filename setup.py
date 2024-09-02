@@ -58,7 +58,7 @@ try:
 
     params = {
         'zip_safe': True,
-        'install_requires': ['pyasn1>=0.4.7']
+        'install_requires': ['pyasn1>=0.5.0']
     }
 
 except ImportError:
@@ -70,7 +70,7 @@ except ImportError:
     from distutils.core import setup, Command
 
     params = {
-        'requires': ['pyasn1>=0.4.7']
+        'requires': ['pyasn1>=0.5.0']
     }
 
 params.update(
