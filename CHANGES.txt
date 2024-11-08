@@ -1,3 +1,7 @@
+Revision 0.4.6, released xx-xx-2025
+-----------------------------------
+- Added RFC9688 for SHA3 One-way Hash Functions in the CMS
+
 Revision 0.4.5, released 02-09-2024
 -----------------------------------
 - Require pyasn1 0.5.0 to force people to the maintained version
