@@ -187,7 +187,8 @@ suite = unittest.TestLoader().loadTestsFromNames(
      'tests.test_rfc9608.suite',
      'tests.test_rfc9629.suite',
      'tests.test_rfc9654.suite',
-     'tests.test_rfc9688.suite']
+     'tests.test_rfc9688.suite',
+     'tests.test_rfc9691.suite']
 )
 
 

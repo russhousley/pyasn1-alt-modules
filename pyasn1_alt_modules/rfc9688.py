@@ -1,6 +1,8 @@
 # This file is part of pyasn1-alt-modules software.
 #
 # Created by Russ Housley
+# Modified by Russ Housley to import items related to KDF2 and KDF3 from
+#   rfc5990, which makes the algorithmIdentifierMap update more simple.
 #
 # Copyright (c) 2024, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
@@ -14,6 +16,7 @@ from pyasn1.type import univ
 
 from pyasn1_alt_modules import rfc3279
 from pyasn1_alt_modules import rfc5280
+from pyasn1_alt_modules import rfc5990
 
 from pyasn1_alt_modules import opentypemap
 
@@ -38,6 +41,23 @@ ECDSA_Sig_Value = rfc3279.ECDSA_Sig_Value
 AlgorithmIdentifier = rfc5280.AlgorithmIdentifier
 
 
+# Imports from RFC 5990
+
+x9_44 = rfc5990.x9_44
+
+x9_44_components = rfc5990.x9_44_components
+
+id_kdf_kdf2 = rfc5990.id_kdf_kdf2
+
+id_kdf_kdf3 = rfc5990.id_kdf_kdf3
+
+KDF2_HashFunction = rfc5990.KDF2_HashFunction
+
+KDF3_HashFunction = rfc5990.KDF3_HashFunction
+
+KeyDerivationFunction = rfc5990.KeyDerivationFunction
+
+
 # OID  arcs
 
 nistAlgorithm = univ.ObjectIdentifier('2.16.840.1.101.3.4')
@@ -47,10 +67,6 @@ hashAlgs = nistAlgorithm + (2, )
 sigAlgs = nistAlgorithm + (3, )
 
 id_alg = univ.ObjectIdentifier('1.2.840.113549.1.9.16.3')
-
-x9_44 = univ.ObjectIdentifier('1.3.133.16.840.9.44')
-
-x9_44_components = x9_44 + (1, )
 
 
 # SHA3 Hash Algorithms
@@ -249,10 +265,6 @@ kda_kmac256['algorithm'] = id_kmac256
 
 # KDF2 and KDF3 with SHA3
 
-id_kdf_kdf2 = x9_44_components + (1, )
-
-id_kdf_kdf3 = x9_44_components + (2, )
-
 kda_kdf2 = rfc5280.AlgorithmIdentifier()
 kda_kdf2['algorithm'] = id_kdf_kdf2
 kda_kdf2['parameters'] = id_sha3_256
@@ -264,18 +276,6 @@ kda_kdf3['parameters'] = id_sha3_256
 # kda_kdf3['parameters'] can be the OID for any hash function
 
 
-class KDF2_HashFunction(AlgorithmIdentifier):
-    pass
-
-
-class KDF3_HashFunction(AlgorithmIdentifier):
-    pass
-
-
-class KeyDerivationFunction(AlgorithmIdentifier):
-    pass
-
-
 # Update the algorithm identifiers map and the S/MIME capability map
 #
 # No need to add all of the OIDs to the algorithmIdentifierMap and the
@@ -283,7 +283,7 @@ class KeyDerivationFunction(AlgorithmIdentifier):
 # always absent.  Also, the KDF OIDs do not get added to the S/MIME
 # capability map.
 
-_mapUpdate1 = {
+_mapUpdate = {
     id_rsassa_pkcs1_v1_5_with_sha3_224: univ.Null(),
     id_rsassa_pkcs1_v1_5_with_sha3_256: univ.Null(),
     id_rsassa_pkcs1_v1_5_with_sha3_384: univ.Null(),
@@ -292,12 +292,6 @@ _mapUpdate1 = {
     id_kmac256: Customization(),
 }
 
-_mapUpdate2 = {
-    id_kdf_kdf2: univ.ObjectIdentifier(),
-    id_kdf_kdf3: univ.ObjectIdentifier(),
-}
+algorithmIdentifierMap.update(_mapUpdate)
 
-algorithmIdentifierMap.update(_mapUpdate1)
-algorithmIdentifierMap.update(_mapUpdate2)
-
-smimeCapabilityMap.update(_mapUpdate1)
+smimeCapabilityMap.update(_mapUpdate)
