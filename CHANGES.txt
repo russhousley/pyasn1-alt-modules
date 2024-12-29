@@ -3,6 +3,7 @@ Revision 0.4.6, released xx-xx-2025
 - Added RFC9688 for SHA3 One-way Hash Functions in the CMS
 - Improve RFC9688 handling of KDF2 and KDF3 entries in algorithm identifier map
 - Added RFC9691 for RPKI Signed Trust Anchor List
+- Add RFC9708 providing HSS/LMS Hash-based Signature Algorithm for CMS
 
 Revision 0.4.5, released 02-09-2024
 -----------------------------------
