@@ -30,5 +30,5 @@ If something does not work as expected,
 Additional module contributions are welcome via GitHub pull requests.
 
 Copyright (c) 2005-2020, [Ilya Etingof](mailto:etingof@gmail.com).<br/>
-Copyright (c) 2021-2024, Vigil Security, LLC, (contact [Russ Housley](mailto:housley@vigilsec.com))<br/>
+Copyright (c) 2021-2025, Vigil Security, LLC, (contact [Russ Housley](mailto:housley@vigilsec.com))<br/>
 All rights reserved.

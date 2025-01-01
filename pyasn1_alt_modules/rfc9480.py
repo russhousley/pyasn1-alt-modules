@@ -6,7 +6,7 @@
 # Modified by Russ Housley to update the algorithmIdentifierMap.
 # Modified bt Russ Housley to correct typo in SignKeyPairTypesValue.
 #
-# Copyright (c) 2021-2024, Vigil Security, LLC
+# Copyright (c) 2021-2025, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
 #
 # Updates to the Certificate Management Protocol (CMP)
