@@ -6,6 +6,7 @@ Revision 0.4.6, released xx-xx-2025
 - Add RFC9708 for HSS/LMS Hash-based Signature Algorithm for CMS
 - Update the copyright comment lines for 2025
 - Add RFC9709 for Encryption Key Derivation in the CMS using HKDF with SHA-256
+- Require pyasn1 0.6.0 so that RelativeOID can be used in the future.
 
 Revision 0.4.5, released 02-09-2024
 -----------------------------------
