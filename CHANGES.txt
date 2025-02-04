@@ -8,6 +8,7 @@ Revision 0.4.6, released xx-xx-2025
 - Added RFC9709 for Encryption Key Derivation in the CMS using HKDF with SHA-256
 - Require pyasn1 0.6.0 so that RelativeOID can be used in the future.
 - Added RFC9690 for KEM-RSA Algorithm with CMS KEMRecipientInfo
+- Added RFC9734 for X.509 Certificate EKU for Instant Messaging URIs
 
 Revision 0.4.5, released 02-09-2024
 -----------------------------------
