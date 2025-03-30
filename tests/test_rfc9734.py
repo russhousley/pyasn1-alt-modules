@@ -10,12 +10,10 @@ import unittest
 
 from pyasn1.codec.der.decoder import decode as der_decoder
 from pyasn1.codec.der.encoder import encode as der_encoder
-from pyasn1.compat.octets import str2octs
 
 from pyasn1_alt_modules import pem
 from pyasn1_alt_modules import rfc5280
 from pyasn1_alt_modules import rfc9734
-from pyasn1_alt_modules import opentypemap
 
 
 class ServerCertificateTestCase(unittest.TestCase):
