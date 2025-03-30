@@ -64,7 +64,7 @@ YIZIAWUCAQVCMRAEDnB0Zi1rZGMtODEyMzc0
         self.assertFalse(rest)
         self.assertTrue(keyid.prettyPrint())
         self.assertEqual(attrVal0, der_encoder(keyid))
-        self.assertEqual('ptf-kdc-812374'.encode(), keyid)
+        self.assertEqual(b'ptf-kdc-812374', keyid)
 
     def testOpenTypes(self):
         substrate = pem.readBase64fromText(self.encrypted_key_pkg_pem_text)
