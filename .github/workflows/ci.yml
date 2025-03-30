@@ -42,5 +42,5 @@ jobs:
           export WHEELFILE=`ls -1 dist/*.whl | head -n 1`
           python -m venv pyasn1-alt-modules-testbed
           source pyasn1-alt-modules-testbed/bin/activate
-          pip install "$WHEELFILE[dev]"
-          pytest
+          pip install "$WHEELFILE"
+          python -m unittest discover -s tests
