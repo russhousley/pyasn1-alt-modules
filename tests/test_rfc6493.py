@@ -11,8 +11,6 @@ import unittest
 from pyasn1.codec.der.decoder import decode as der_decoder
 from pyasn1.codec.der.encoder import encode as der_encoder
 
-from pyasn1.compat.octets import str2octs
-
 from pyasn1_alt_modules import pem
 from pyasn1_alt_modules import rfc5652
 from pyasn1_alt_modules import rfc6493
@@ -90,7 +88,7 @@ XA==
             layer = getNextLayer[layer](asn1Object)
 
         self.assertEqual(rfc6493.id_ct_rpkiGhostbusters, layer)
-        self.assertEqual(str2octs('BEGIN:VCARD'), substrate[0:11])
+        self.assertEqual(b'BEGIN:VCARD', substrate[0:11])
 
 
 suite = unittest.TestLoader().loadTestsFromModule(sys.modules[__name__])

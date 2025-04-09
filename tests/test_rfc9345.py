@@ -10,8 +10,6 @@ import unittest
 from pyasn1.codec.der.decoder import decode as der_decoder
 from pyasn1.codec.der.encoder import encode as der_encoder
 
-from pyasn1.compat.octets import str2octs
-
 from pyasn1_alt_modules import pem
 from pyasn1_alt_modules import rfc5280
 from pyasn1_alt_modules import rfc9345
@@ -65,7 +63,7 @@ y5S4RfWHIIPjbw==
         for extn in asn1Object['tbsCertificate']['extensions']:
             if extn['extnID'] == rfc9345.id_pe_delegationUsage:
                 found = True
-                self.assertEqual(str2octs('\x05\x00'), extn['extnValue'])
+                self.assertEqual(b'\x05\x00', extn['extnValue'])
 
         self.assertTrue(found)
 
