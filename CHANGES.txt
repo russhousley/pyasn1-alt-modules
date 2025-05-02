@@ -1,3 +1,9 @@
+Revision 0.4.7, released DD-MMM-2025
+------------------------------------
+- Cleanup setup.cfg and setup.py
+- Added RFC9763 for Related Certificates for Use in Multiple Authentications
+  within a Protocol
+
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
 - Added RFC9688 for SHA3 One-way Hash Functions in the CMS
