@@ -5,6 +5,7 @@ Revision 0.4.7, released DD-MMM-2025
   within a Protocol
 - Add RFC5794 providing the ARIA Encryption Algorithm, which is possible
   since pyasn1 0.6.0 and later includes support for univ.RelativeOID
+- Add RFC8295 providing Enrollment over Secure Transport (EST) Extensions
 
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
