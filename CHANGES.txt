@@ -6,8 +6,10 @@ Revision 0.4.7, released DD-MMM-2025
 - Add RFC5794 providing the ARIA Encryption Algorithm, which is possible
   since pyasn1 0.6.0 and later includes support for univ.RelativeOID
 - Add RFC8295 providing Enrollment over Secure Transport (EST) Extensions
-- Add RFC4212 providing  Alternative Certificate Formats for the PKIX
+- Add RFC4212 providing Alternative Certificate Formats for the PKIX
   Certificate Management Protocols
+- Add RFC9802 providing HSS/LMS, XMSS, and XMSS^MT Hash-based Signature
+  Algorithms for X.509
 
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
