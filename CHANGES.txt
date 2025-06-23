@@ -10,6 +10,7 @@ Revision 0.4.7, released DD-MMM-2025
   Certificate Management Protocols
 - Add RFC9802 providing HSS/LMS, XMSS, and XMSS^MT Hash-based Signature
   Algorithms for X.509
+- Add RFC9810 providing Certificate Management Protocol (CMP)
 
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
