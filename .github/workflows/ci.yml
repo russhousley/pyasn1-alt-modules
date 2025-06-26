@@ -8,6 +8,7 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
 
 jobs:
   build_wheel:
@@ -44,3 +45,20 @@ jobs:
           source pyasn1-alt-modules-testbed/bin/activate
           pip install "$WHEELFILE"
           python -m unittest discover -s tests
+
+  release_wheel:
+    needs: [test_wheel]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'published' || github.event_name == 'workflow_dispatch'
+    environment:
+      name: "${{ github.event.name == 'release' && 'pypi' || 'testpypi' }}"
+      url: "${{ github.event.name == 'release' && 'https://pypi.org/p/pyasn1-alt-modules' || 'https://test.pypi.org/p/pyasn1-alt-modules' }}"
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: dist
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
