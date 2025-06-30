@@ -12,6 +12,8 @@ Revision 0.4.7, released DD-MMM-2025
   Algorithms for X.509
 - Add RFC9810 providing Certificate Management Protocol (CMP)
 - Add RFC9814 providing SLH-DSA Signature Algorithm for the CMS
+- Add RFC9809 providing X.509 Certificate Extended Key Usage (EKU) values
+  for configuration, updates, and safety communication
 
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
