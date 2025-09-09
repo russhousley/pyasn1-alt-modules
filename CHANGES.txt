@@ -14,6 +14,7 @@ Revision 0.4.7, released DD-MMM-2025
 - Add RFC9814 providing SLH-DSA Signature Algorithm for the CMS
 - Add RFC9809 providing X.509 Certificate Extended Key Usage (EKU) values
   for configuration, updates, and safety communication
+- Added RFC9879 for Use of PBMAC1 in the PKCS #12 Syntax, which updates RFC9579.
 
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
