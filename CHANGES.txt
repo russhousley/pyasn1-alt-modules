@@ -16,6 +16,8 @@ Revision 0.4.7, released DD-MMM-2025
   for configuration, updates, and safety communication
 - Added RFC9879 for Use of PBMAC1 in the PKCS #12 Syntax, which updates RFC9579
 - Added RFC9881 for Algorithm Identifiers for ML-DSA in Certificates and CRLs
+- Dropped support for EOL Python 3.8, and 3.9; added support for Python 3.14
+
      
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
