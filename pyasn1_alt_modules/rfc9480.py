@@ -661,8 +661,11 @@ class RootCaCertValue(CMPCertificate):
 #
 id_it_certProfile = id_it + (21,)
 
-class CertProfileValue(char.UTF8String):
-    pass
+class CertProfileValue(univ.SequenceOf):
+    """Defines the ASN.1 structure for the `CertProfileValue`."""
+
+    componentType = char.UTF8String()
+    subtypeSpec = constraint.ValueSizeConstraint(1, MAX)
 
 
 # Added in CMP Updates
