@@ -21,7 +21,7 @@ from pyasn1.type import tag
 from pyasn1.type import univ
 from pyasn1.type import useful
 
-from pyasn1_alt_modules import rfc2985
+from pyasn1_alt_modules import rfc2985, rfc9480
 from pyasn1_alt_modules import rfc4210
 from pyasn1_alt_modules import rfc4211
 from pyasn1_alt_modules import rfc5280
@@ -208,7 +208,7 @@ RevRepContent = rfc4210.RevRepContent
 KeyRecRepContent = rfc4210.KeyRecRepContent
 
 
-CertResponse = rfc4210.CertResponse
+CertResponse = rfc9480.CertResponse
 
 
 CertRepMessage = rfc4210.CertRepMessage
