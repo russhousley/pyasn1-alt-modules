@@ -523,7 +523,7 @@ class CertReqTemplateContent(univ.Sequence):
 
 # Added in RFC 9810
 #
-class KemBMParameter(univ.Choice):
+class CAKeyUpdContent(univ.Choice):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('cAKeyUpdAnnV2', CAKeyUpdAnnContent()),
         namedtype.NamedType('cAKeyUpdAnnV3', RootCaKeyUpdateContent().subtype(
