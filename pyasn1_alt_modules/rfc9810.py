@@ -493,13 +493,21 @@ class ProtectedPart(univ.Sequence):
 # Added in CMP Updates (RFC 9480)
 #
 class CRLSource(univ.Choice):
+    """Defines the ASN.1 structure for the `CRLSource`.
+
+    CRLSource ::= CHOICE {
+     dpn          [0] DistributionPointName,
+     issuer       [1] GeneralNames }
+    """
+
     componentType = namedtype.NamedTypes(
-        namedtype.NamedType('dpn', DistributionPointName().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 0))),
-        namedtype.NamedType('issuer', EncryptedKey().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 1)))
+        namedtype.NamedType(
+            "dpn",
+            rfc5280.DistributionPointName().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 0)),
+        ),
+        namedtype.NamedType(
+            "issuer", rfc5280.GeneralNames().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 1))
+        ),
     )
 
 
