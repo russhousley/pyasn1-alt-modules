@@ -523,16 +523,6 @@ class CertReqTemplateContent(univ.Sequence):
 
 # Added in RFC 9810
 #
-class CAKeyUpdContent(univ.Choice):
-    componentType = namedtype.NamedTypes(
-        namedtype.NamedType('cAKeyUpdAnnV2', CAKeyUpdAnnContent()),
-        namedtype.NamedType('cAKeyUpdAnnV3', RootCaKeyUpdateContent().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatConstructed, 0)))
-    )
-
-
-# Added in RFC 9810
-#
 class KemCiphertextInfo(univ.Sequence):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('kem', AlgorithmIdentifier()),
