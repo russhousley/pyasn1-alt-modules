@@ -6,7 +6,7 @@
 # Copyright (c) 2025, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
-# ML-KDSA Algorithm for use in X.509 Certificats
+# ML-DSA Algorithm for use in X.509 Certificats
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc9881.txt
@@ -55,7 +55,7 @@ sa_ml_dsa_87['algorithm'] = id_ml_dsa_87
 # sa_ml_dsa_87['parameters'] are absent
 
 
-# Public Key for use only with the ML-DSA Algorithm 
+# Public Key for the ML-DSA algorithm 
 
 pk_ml_dsa_44 = SubjectPublicKeyInfo()
 pk_ml_dsa_44['algorithm']['algorithm'] = id_ml_dsa_44
@@ -73,7 +73,7 @@ pk_ml_dsa_87['algorithm']['algorithm'] = id_ml_dsa_87
 # pk_ml_dsa_87['subjectPublicKey'] = univ.BitString.fromOctetString(public_key)
 
 
-# Private key outside an asymmetric key package
+# Private key for the ML-DSA algorithm outside an asymmetric key package
 
 class ML_DSA_44_PrivateKey(univ.Choice):
     componentType = namedtype.NamedTypes(
@@ -123,7 +123,7 @@ class ML_DSA_87_PrivateKey(univ.Choice):
     )
 
 
-# Public key outside of a certificate
+# Public key for the ML-DSA algorithm outside of a certificate
 
 class ML_DSA_44_PublicKey(univ.OctetString):
     subtypeSpec = constraint.ValueSizeConstraint(1312, 1312)
