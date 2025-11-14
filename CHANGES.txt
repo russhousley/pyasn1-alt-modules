@@ -20,6 +20,7 @@ Revision 0.4.7, released DD-MMM-2025
 - Added RFC9882 for Algorithm Identifiers for ML-DSA in CMS
 - Added RFC9883 for An Attribute for Statement of Possession of a Private Key
 - Updated the link to the pyasn1 project in README.md
+- Correct the URL to the license file in rfc8295.py
      
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------

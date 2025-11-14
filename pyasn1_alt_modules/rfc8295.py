@@ -4,7 +4,7 @@
 # Created by Russ Housley.
 #
 # Copyright (c) 2025, Vigil Security, LLC
-# License: http://snmplabs.com/pyasn1/license.html
+# License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Enrollment over Secure Transport (EST) Extensions
 #
