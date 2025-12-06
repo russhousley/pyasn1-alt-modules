@@ -214,9 +214,6 @@ RevRepContent = rfc4210.RevRepContent
 KeyRecRepContent = rfc4210.KeyRecRepContent
 
 
-CertResponse = rfc4210.CertResponse
-
-
 CertRepMessage = rfc4210.CertRepMessage
 
 
@@ -254,6 +251,25 @@ class ErrorMsgContent(univ.Sequence):
         namedtype.OptionalNamedType('errorCode', univ.Integer()),
         namedtype.OptionalNamedType('errorDetails', PKIFreeText())
     )
+
+class CertResponse(univ.Sequence):
+    """Define the ASN.1 structure for the `CertResponse`.
+
+    CertResponse ::= SEQUENCE {
+        certReqId INTEGER,
+        status PKIStatusInfo,
+        certifiedKeyPair CertifiedKeyPair OPTIONAL,
+        rspInfo OCTET STRING OPTIONAL
+    }
+    """
+
+    componentType = namedtype.NamedTypes(
+        namedtype.NamedType("certReqId", univ.Integer()),
+        namedtype.NamedType("status", PKIStatusInfo()),
+        namedtype.OptionalNamedType("certifiedKeyPair", CertifiedKeyPair()),
+        namedtype.OptionalNamedType("rspInfo", univ.OctetString()),
+    )
+
 
 
 PollReqContent = rfc4210.PollReqContent
@@ -463,13 +479,21 @@ class RootCaKeyUpdateContent(univ.Sequence):
 # Added in CMP Updates
 #
 class CRLSource(univ.Choice):
+    """Defines the ASN.1 structure for the `CRLSource`.
+
+    CRLSource ::= CHOICE {
+     dpn          [0] DistributionPointName,
+     issuer       [1] GeneralNames }
+    """
+
     componentType = namedtype.NamedTypes(
-        namedtype.NamedType('dpn', DistributionPointName().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 0))),
-        namedtype.NamedType('issuer', EncryptedKey().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 1)))
+        namedtype.NamedType(
+            "dpn",
+            rfc5280.DistributionPointName().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 0)),
+        ),
+        namedtype.NamedType(
+            "issuer", rfc5280.GeneralNames().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 1))
+        ),
     )
 
 
@@ -653,8 +677,11 @@ class RootCaCertValue(CMPCertificate):
 #
 id_it_certProfile = id_it + (21,)
 
-class CertProfileValue(char.UTF8String):
-    pass
+class CertProfileValue(univ.SequenceOf):
+    """Defines the ASN.1 structure for the `CertProfileValue`."""
+
+    componentType = char.UTF8String()
+    subtypeSpec = constraint.ValueSizeConstraint(1, MAX)
 
 
 # Added in CMP Updates

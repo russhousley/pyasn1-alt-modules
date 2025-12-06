@@ -21,7 +21,7 @@ from pyasn1.type import tag
 from pyasn1.type import univ
 from pyasn1.type import useful
 
-from pyasn1_alt_modules import rfc2985
+from pyasn1_alt_modules import rfc2985, rfc9480
 from pyasn1_alt_modules import rfc4210
 from pyasn1_alt_modules import rfc4211
 from pyasn1_alt_modules import rfc5280
@@ -208,7 +208,7 @@ RevRepContent = rfc4210.RevRepContent
 KeyRecRepContent = rfc4210.KeyRecRepContent
 
 
-CertResponse = rfc4210.CertResponse
+CertResponse = rfc9480.CertResponse
 
 
 CertRepMessage = rfc4210.CertRepMessage
@@ -493,13 +493,21 @@ class ProtectedPart(univ.Sequence):
 # Added in CMP Updates (RFC 9480)
 #
 class CRLSource(univ.Choice):
+    """Defines the ASN.1 structure for the `CRLSource`.
+
+    CRLSource ::= CHOICE {
+     dpn          [0] DistributionPointName,
+     issuer       [1] GeneralNames }
+    """
+
     componentType = namedtype.NamedTypes(
-        namedtype.NamedType('dpn', DistributionPointName().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 0))),
-        namedtype.NamedType('issuer', EncryptedKey().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 1)))
+        namedtype.NamedType(
+            "dpn",
+            rfc5280.DistributionPointName().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 0)),
+        ),
+        namedtype.NamedType(
+            "issuer", rfc5280.GeneralNames().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 1))
+        ),
     )
 
 
@@ -518,16 +526,6 @@ class CertReqTemplateContent(univ.Sequence):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('certTemplate', CertTemplate()),
         namedtype.OptionalNamedType('keySpec', Controls())
-    )
-
-
-# Added in RFC 9810
-#
-class KemBMParameter(univ.Choice):
-    componentType = namedtype.NamedTypes(
-        namedtype.NamedType('cAKeyUpdAnnV2', CAKeyUpdAnnContent()),
-        namedtype.NamedType('cAKeyUpdAnnV3', RootCaKeyUpdateContent().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatConstructed, 0)))
     )
 
 
@@ -718,8 +716,11 @@ class RootCaCertValue(CMPCertificate):
 #
 id_it_certProfile = id_it + (21,)
 
-class CertProfileValue(char.UTF8String):
-    pass
+class CertProfileValue(univ.SequenceOf):
+    """Defines the ASN.1 structure for the `CertProfileValue`."""
+
+    componentType = char.UTF8String()
+    subtypeSpec = constraint.ValueSizeConstraint(1, MAX)
 
 
 # Added in CMP Updates
