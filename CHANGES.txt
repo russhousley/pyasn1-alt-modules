@@ -1,4 +1,4 @@
-Revision 0.4.7, released DD-MMM-2025
+Revision 0.4.7, released 22-DEC-2025
 ------------------------------------
 - Cleanup setup.cfg and setup.py
 - Added RFC9763 for Related Certificates for Use in Multiple Authentications
