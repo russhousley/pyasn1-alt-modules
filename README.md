@@ -7,15 +7,16 @@ Alternative ASN.1 modules for pyasn1
 
 The `pyasn1-alt-modules` package contains a collection of
 [ASN.1](https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-X.208-198811-W!!PDF-E&type=items)
-data structures expressed as Python classes based on [pyasn1](https://github.com/etingof/pyasn1)
-data model. Maintenance of pyasn1 has shifted to [pyasn1-maint](https://github.com/pyasn1/pyasn1).
+data structures expressed as Python classes based on [pyasn1](https://github.com/pyasn1/pyasn1)
+data model.
 
-It seems that [pyasn1-modules](https://github.com/etingof/pyasn1-modules) is no
-longer being maintained.  As a result, the `pyasn1-alt-modules` package was
-created to share new module developments.  Previous modules are included in
-the `pyasn1-alt-modules` package so that both do not need to be installed.
+Many years ago, maintenance of [pyasn1-modules](https://github.com/etingof/pyasn1-modules)
+stopped.  As a result, the `pyasn1-alt-modules` package was created to share new
+module developments.  Previous modules are included in the `pyasn1-alt-modules`
+package so that both packages do not need to be installed.
 
-However, the tools directory of the `pyasn1-modules` package is not included.
+However, the tools directory of the `pyasn1-modules` package is not included in
+the `pyasn1-alt-modules` package.
 
 If ASN.1 module you need is not present in this collection, try using
 [Asn1ate](https://github.com/kimgr/asn1ate) tool that compiles (some)
@@ -29,6 +30,6 @@ If something does not work as expected,
  
 Additional module contributions are welcome via GitHub pull requests.
 
-Copyright (c) 2005-2020, [Ilya Etingof](mailto:etingof@gmail.com).<br/>
+Copyright (c) 2005-2020, Ilya Etingof (deceased).<br/>
 Copyright (c) 2021-2025, Vigil Security, LLC, (contact [Russ Housley](mailto:housley@vigilsec.com))<br/>
 All rights reserved.

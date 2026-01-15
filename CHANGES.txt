@@ -1,4 +1,4 @@
-Revision 0.4.7, released DD-MMM-2025
+Revision 0.4.7, released 22-DEC-2025
 ------------------------------------
 - Cleanup setup.cfg and setup.py
 - Added RFC9763 for Related Certificates for Use in Multiple Authentications
@@ -19,7 +19,12 @@ Revision 0.4.7, released DD-MMM-2025
 - Dropped support for EOL Python 3.8, and 3.9; added support for Python 3.14
 - Added RFC9882 for Algorithm Identifiers for ML-DSA in CMS
 - Added RFC9883 for An Attribute for Statement of Possession of a Private Key
-     
+- Updated the link to the pyasn1 project in README.md
+- Correct the URL to the license file in rfc8295.py
+- Add RFC9632 providing CMS Content Type for Geofeed Data (replaces RFC9092)
+- Add RFC9908 providing Clarification of RFC7030 CSR Attributes definition
+- Add RFC9909 providing SLH-DSA Signature Algorithm for Certificates
+
 Revision 0.4.6, released 25-MAR-2025
 ------------------------------------
 - Added RFC9688 for SHA3 One-way Hash Functions in the CMS
