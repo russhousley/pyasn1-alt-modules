@@ -9,7 +9,7 @@
 # Modified by Russ Housley for errata 3943, 5931, and 6571.
 #
 # Copyright (c) 2005-2020, Ilya Etingof <etingof@gmail.com>
-# Copyright (c) 2021-2025, Vigil Security, LLC
+# Copyright (c) 2021-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Certificate Management over CMS (CMC) Updates

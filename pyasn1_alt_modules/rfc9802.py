@@ -2,7 +2,7 @@
 #
 # Created by Russ Housley
 #
-# Copyright (c) 2025, Vigil Security, LLC
+# Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # HSS/LMS, XMSS, and XMSS^MT Hash-based Signature Algorithms for X.509

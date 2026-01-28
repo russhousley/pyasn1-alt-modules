@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2022-2025, Vigil Security, LLC
+# Copyright (c) 2022-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # PKCS #5: Password-Based Cryptography Specification, Version 2.0

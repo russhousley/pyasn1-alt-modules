@@ -1,3 +1,7 @@
+Revision 0.4.8, released XX-XXX-2026
+------------------------------------
+- Update the copyright comment lines for 2026
+
 Revision 0.4.7, released 22-DEC-2025
 ------------------------------------
 - Cleanup setup.cfg and setup.py

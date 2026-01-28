@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2023-2025, Vigil Security, LLC
+# Copyright (c) 2023-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # PkiPath as used in TLS Extensions
