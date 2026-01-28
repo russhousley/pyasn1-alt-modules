@@ -5,7 +5,7 @@
 # Modified by Russ Housley to include size constraints for the nonce (RFC 8954).
 # Modified by Russ Housley to adjust size constraints for the nonce (RFC 9654).
 #
-# Copyright (c) 2019-2025, Vigil Security, LLC
+# Copyright (c) 2019-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Online Certificate Status Protocol (OCSP)

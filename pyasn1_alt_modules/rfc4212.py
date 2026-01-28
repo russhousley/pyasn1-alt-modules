@@ -4,7 +4,7 @@
 #
 # Created by Russ Housley with some assistance from asn1ate v.0.6.0.
 #
-# Copyright (c) 2025, Vigil Security, LLC
+# Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Alternative Certificate Formats for the PKIX Certificate Management Protocols

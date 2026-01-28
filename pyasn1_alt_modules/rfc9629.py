@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley with some help from by asn1ate v.0.6.0.
 #
-# Copyright (c) 2023-2025, Vigil Security, LLC
+# Copyright (c) 2023-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # CMS KEMRecipientInfo

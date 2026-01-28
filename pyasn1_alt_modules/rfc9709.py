@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2025, Vigil Security, LLC
+# Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
 #
 # Encryption Key Derivation in the CMS using HKDF with SHA-256

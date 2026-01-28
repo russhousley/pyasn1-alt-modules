@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2022-2025, Vigil Security, LLC
+# Copyright (c) 2022-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Certificate Extension for 5G Network Function Types

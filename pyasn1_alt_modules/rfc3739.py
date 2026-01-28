@@ -8,7 +8,7 @@
 # Modified by CBonnell to align the SemanticsInformation
 #   definition with https://www.rfc-editor.org/errata/eid7802.
 #
-# Copyright (c) 2019-2025, Vigil Security, LLC
+# Copyright (c) 2019-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Qualified Certificates

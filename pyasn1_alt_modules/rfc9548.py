@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2024-2025, Vigil Security, LLC
+# Copyright (c) 2024-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Generating Transport Key Containers Using the GOST Algorithms

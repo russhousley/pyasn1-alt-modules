@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley from rfc3709.py and rfc6710.py.
 #
-# Copyright (c) 2023-2025, Vigil Security, LLC
+# Copyright (c) 2023-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Logotypes in X.509 Certificates
