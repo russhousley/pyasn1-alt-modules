@@ -493,7 +493,7 @@ class CRLSource(univ.Choice):
                                                                         tag.tagFormatConstructed, 0)),
         ),
         namedtype.NamedType(
-            "issuer", rfc5280.GeneralNames().subtype(eplicitTag=tag.Tag(tag.tagClassContext,
+            "issuer", rfc5280.GeneralNames().subtype(explicitTag=tag.Tag(tag.tagClassContext,
                                                                          tag.tagFormatConstructed, 1))
         ),
     )
