@@ -503,10 +503,12 @@ class CRLSource(univ.Choice):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType(
             "dpn",
-            rfc5280.DistributionPointName().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 0)),
+            rfc5280.DistributionPointName().subtype(explicitTag=tag.Tag(tag.tagClassContext,
+                                                                        tag.tagFormatConstructed, 0)),
         ),
         namedtype.NamedType(
-            "issuer", rfc5280.GeneralNames().subtype(implicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 1))
+            "issuer", rfc5280.GeneralNames().subtype(explicitTag=tag.Tag(tag.tagClassContext,
+                                                                         tag.tagFormatConstructed, 1))
         ),
     )
 
