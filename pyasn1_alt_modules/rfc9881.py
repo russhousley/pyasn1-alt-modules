@@ -134,7 +134,7 @@ class ML_DSA_65_PublicKey(univ.OctetString):
 
 
 class ML_DSA_87_PublicKey(univ.OctetString):
-    subtypeSpec = constraint.ValueSizeConstraint(2602, 2602)
+    subtypeSpec = constraint.ValueSizeConstraint(2592, 2592)
 
 
 # No need to update the Algorithm Identifier map or the S/MIME
