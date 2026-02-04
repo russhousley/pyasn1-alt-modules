@@ -10,6 +10,7 @@
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc9881.txt
+# https://www.rfc-editor.org/errata/eid8699
 #
 
 from pyasn1.type import constraint
