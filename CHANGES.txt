@@ -1,6 +1,7 @@
-Revision 0.4.8, released XX-XXX-2026
+Revision 0.4.8, released 04-FEB-2026
 ------------------------------------
 - Update the copyright comment lines for 2026
+- Fix RFC9881 from CBonnell; see https://www.rfc-editor.org/errata/eid8699
 
 Revision 0.4.7, released 22-DEC-2025
 ------------------------------------
