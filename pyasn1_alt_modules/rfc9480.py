@@ -486,15 +486,12 @@ class CRLSource(univ.Choice):
     """
 
     componentType = namedtype.NamedTypes(
-        namedtype.NamedType(
-            "dpn",
-            DistributionPointName().subtype(explicitTag=tag.Tag(tag.tagClassContext,
-                                                                        tag.tagFormatConstructed, 0)),
-        ),
-        namedtype.NamedType(
-            "issuer", GeneralNames().subtype(explicitTag=tag.Tag(tag.tagClassContext,
-                                                                         tag.tagFormatConstructed, 1))
-        ),
+        namedtype.NamedType('dpn', DistributionPointName().subtype(
+            explicitTag=tag.Tag(tag.tagClassContext,
+                                tag.tagFormatConstructed, 0))),
+        namedtype.NamedType('issuer', GeneralNames().subtype(
+            explicitTag=tag.Tag(tag.tagClassContext,
+                                tag.tagFormatConstructed, 1)))
     )
 
 
