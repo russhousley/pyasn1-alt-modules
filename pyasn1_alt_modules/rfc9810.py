@@ -21,7 +21,7 @@ from pyasn1.type import tag
 from pyasn1.type import univ
 from pyasn1.type import useful
 
-from pyasn1_alt_modules import rfc2985, rfc9480
+from pyasn1_alt_modules import rfc2985
 from pyasn1_alt_modules import rfc4210
 from pyasn1_alt_modules import rfc4211
 from pyasn1_alt_modules import rfc5280
@@ -207,10 +207,6 @@ RevRepContent = rfc4210.RevRepContent
 
 KeyRecRepContent = rfc4210.KeyRecRepContent
 
-
-CertResponse = rfc9480.CertResponse
-
-
 CertRepMessage = rfc4210.CertRepMessage
 
 
@@ -273,6 +269,24 @@ class ErrorMsgContent(univ.Sequence):
         namedtype.NamedType('pKIStatusInfo', PKIStatusInfo()),
         namedtype.OptionalNamedType('errorCode', univ.Integer()),
         namedtype.OptionalNamedType('errorDetails', PKIFreeText())
+    )
+
+class CertResponse(univ.Sequence):
+    """Define the ASN.1 structure for the `CertResponse`.
+
+    CertResponse ::= SEQUENCE {
+        certReqId INTEGER,
+        status PKIStatusInfo,
+        certifiedKeyPair CertifiedKeyPair OPTIONAL,
+        rspInfo OCTET STRING OPTIONAL
+    }
+    """
+
+    componentType = namedtype.NamedTypes(
+        namedtype.NamedType("certReqId", univ.Integer()),
+        namedtype.NamedType("status", PKIStatusInfo()),
+        namedtype.OptionalNamedType("certifiedKeyPair", CertifiedKeyPair()),
+        namedtype.OptionalNamedType("rspInfo", univ.OctetString()),
     )
 
 
