@@ -1,3 +1,8 @@
+Revision 0.4.9, released XX-XXX-2026
+------------------------------------
+- Added RFC9935 for Algorithm Identifiers for ML-KEM in Certificates
+- Added RFC9936 for Algorithm Identifiers for ML-KEM in CMS KEMRecipientInfo
+
 Revision 0.4.8, released 04-FEB-2026
 ------------------------------------
 - Update the copyright comment lines for 2026
