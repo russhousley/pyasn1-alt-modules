@@ -124,9 +124,6 @@ OOBCert = rfc4210.OOBCert
 CertAnnContent = rfc4210.CertAnnContent
 
 
-KeyIdentifier = rfc4210.KeyIdentifier
-
-
 PollRepContent = rfc4210.PollRepContent
 
 
