@@ -2,8 +2,10 @@
 # This file is part of pyasn1_alt_modules software.
 #
 # Created by Russ Housley taking much from rfc9480.py.
+# Modified by Guiliano Lehmann to correct CertProfileValue, CRLSource,
+#   KemBMParameter, CertResponse and CertRepMessage.
 #
-# Copyright (c) 2025, Vigil Security, LLC
+# Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
 #
 # Certificate Management Protocol (CMP)
