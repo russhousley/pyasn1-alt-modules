@@ -161,29 +161,6 @@ class GenMsgContent(univ.SequenceOf):
     componentType = InfoTypeAndValue()
 
 
-class CertOrEncCert(univ.Choice):
-    componentType = namedtype.NamedTypes(
-        namedtype.NamedType('certificate', CMPCertificate().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 0))),
-        namedtype.NamedType('encryptedCert', EncryptedKey().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatSimple, 1)))
-    )
-
-
-class CertifiedKeyPair(univ.Sequence):
-    componentType = namedtype.NamedTypes(
-        namedtype.NamedType('certOrEncCert', CertOrEncCert()),
-        namedtype.OptionalNamedType('privateKey',
-            EncryptedKey().subtype(explicitTag=tag.Tag(
-                tag.tagClassContext, tag.tagFormatSimple, 0))),
-        namedtype.OptionalNamedType('publicationInfo',
-            PKIPublicationInfo().subtype(explicitTag=tag.Tag(
-                tag.tagClassContext, tag.tagFormatSimple, 1)))
-    )
-
-
 POPODecKeyRespContent = rfc4210.POPODecKeyRespContent
 
 
@@ -214,9 +191,6 @@ RevRepContent = rfc4210.RevRepContent
 KeyRecRepContent = rfc4210.KeyRecRepContent
 
 
-CertRepMessage = rfc4210.CertRepMessage
-
-
 POPODecKeyChallContent = rfc4210.POPODecKeyChallContent
 
 
@@ -245,31 +219,55 @@ class PKIStatusInfo(univ.Sequence):
     )
 
 
+class CertOrEncCert(univ.Choice):
+    componentType = namedtype.NamedTypes(
+        namedtype.NamedType('certificate', CMPCertificate().subtype(
+            explicitTag=tag.Tag(tag.tagClassContext,
+                                tag.tagFormatConstructed, 0))),
+        namedtype.NamedType('encryptedCert', EncryptedKey().subtype(
+            explicitTag=tag.Tag(tag.tagClassContext,
+                                tag.tagFormatSimple, 1)))
+    )
+
+
+class CertifiedKeyPair(univ.Sequence):
+    componentType = namedtype.NamedTypes(
+        namedtype.NamedType('certOrEncCert', CertOrEncCert()),
+        namedtype.OptionalNamedType('privateKey',
+                                    EncryptedKey().subtype(explicitTag=tag.Tag(
+                                        tag.tagClassContext, tag.tagFormatSimple, 0))),
+        namedtype.OptionalNamedType('publicationInfo',
+                                    PKIPublicationInfo().subtype(explicitTag=tag.Tag(
+                                        tag.tagClassContext, tag.tagFormatSimple, 1)))
+    )
+
+class CertResponse(univ.Sequence):
+    componentType = namedtype.NamedTypes(
+        namedtype.NamedType('certReqId', univ.Integer()),
+        namedtype.NamedType('status', PKIStatusInfo()),
+        namedtype.OptionalNamedType('certifiedKeyPair', CertifiedKeyPair()),
+        namedtype.OptionalNamedType('rspInfo', univ.OctetString())
+    )
+
+
+class CertRepMessage(univ.Sequence):
+    componentType = namedtype.NamedTypes(
+        namedtype.OptionalNamedType('caPubs', univ.SequenceOf(
+            componentType=CMPCertificate()).subtype(
+            sizeSpec=constraint.ValueSizeConstraint(1, MAX),
+            explicitTag=tag.Tag(tag.tagClassContext,
+                                tag.tagFormatConstructed, 1))),
+        namedtype.NamedType('response', univ.SequenceOf(
+            componentType=CertResponse()))
+    )
+
+
 class ErrorMsgContent(univ.Sequence):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('pKIStatusInfo', PKIStatusInfo()),
         namedtype.OptionalNamedType('errorCode', univ.Integer()),
         namedtype.OptionalNamedType('errorDetails', PKIFreeText())
     )
-
-class CertResponse(univ.Sequence):
-    """Define the ASN.1 structure for the `CertResponse`.
-
-    CertResponse ::= SEQUENCE {
-        certReqId INTEGER,
-        status PKIStatusInfo,
-        certifiedKeyPair CertifiedKeyPair OPTIONAL,
-        rspInfo OCTET STRING OPTIONAL
-    }
-    """
-
-    componentType = namedtype.NamedTypes(
-        namedtype.NamedType("certReqId", univ.Integer()),
-        namedtype.NamedType("status", PKIStatusInfo()),
-        namedtype.OptionalNamedType("certifiedKeyPair", CertifiedKeyPair()),
-        namedtype.OptionalNamedType("rspInfo", univ.OctetString()),
-    )
-
 
 
 PollReqContent = rfc4210.PollReqContent
