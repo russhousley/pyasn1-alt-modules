@@ -210,8 +210,6 @@ KeyRecRepContent = rfc4210.KeyRecRepContent
 CertRepMessage = rfc4210.CertRepMessage
 
 
-POPODecKeyChallContent = rfc4210.POPODecKeyChallContent
-
 
 OOBCertHash = rfc4210.OOBCertHash
 
@@ -249,6 +247,9 @@ class Challenge(univ.Sequence):
             EnvelopedData().subtype(explicitTag=tag.Tag(
                 tag.tagClassContext, tag.tagFormatSimple, 0)))
     )
+
+class POPODecKeyChallContent(univ.SequenceOf):
+    componentType = Challenge()
 
 
 class PKIFreeText(univ.SequenceOf):
