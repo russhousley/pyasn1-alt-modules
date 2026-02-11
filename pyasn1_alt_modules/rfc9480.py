@@ -476,13 +476,6 @@ class RootCaKeyUpdateContent(univ.Sequence):
 # Added in CMP Updates
 #
 class CRLSource(univ.Choice):
-    """Defines the ASN.1 structure for the `CRLSource`.
-
-    CRLSource ::= CHOICE {
-     dpn          [0] DistributionPointName,
-     issuer       [1] GeneralNames }
-    """
-
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('dpn', DistributionPointName().subtype(
             explicitTag=tag.Tag(tag.tagClassContext,
