@@ -152,29 +152,6 @@ class GenRepContent(univ.SequenceOf):
     componentType = InfoTypeAndValue()
 
 
-class CertOrEncCert(univ.Choice):
-    componentType = namedtype.NamedTypes(
-        namedtype.NamedType('certificate', CMPCertificate().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatConstructed, 0))),
-        namedtype.NamedType('encryptedCert', EncryptedKey().subtype(
-            explicitTag=tag.Tag(tag.tagClassContext,
-                tag.tagFormatSimple, 1)))
-    )
-
-
-class CertifiedKeyPair(univ.Sequence):
-    componentType = namedtype.NamedTypes(
-        namedtype.NamedType('certOrEncCert', CertOrEncCert()),
-        namedtype.OptionalNamedType('privateKey',
-            EncryptedKey().subtype(explicitTag=tag.Tag(
-                tag.tagClassContext, tag.tagFormatSimple, 0))),
-        namedtype.OptionalNamedType('publicationInfo',
-            PKIPublicationInfo().subtype(explicitTag=tag.Tag(
-                tag.tagClassContext, tag.tagFormatSimple, 1)))
-    )
-
-
 POPODecKeyRespContent = rfc4210.POPODecKeyRespContent
 
 
