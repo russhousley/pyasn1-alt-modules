@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2024-2025, Vigil Security, LLC
+# Copyright (c) 2024-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Extended Key Usage (EKU) for 5G Network Functions

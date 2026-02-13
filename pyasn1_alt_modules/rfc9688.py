@@ -4,7 +4,7 @@
 # Modified by Russ Housley to import items related to KDF2 and KDF3 from
 #   rfc5990, which makes the algorithmIdentifierMap update more simple.
 #
-# Copyright (c) 2024-2025, Vigil Security, LLC
+# Copyright (c) 2024-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Use of the SHA3 One-way Hash Functions in the CMS

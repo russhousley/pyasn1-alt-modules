@@ -5,7 +5,7 @@
 # Modified by Russ Housley to add synonyms with two digit years for
 #   some of the OIDs to align with the ASN.1 module in RFC 9215.
 #
-# Copyright (c) 2022-2025, Vigil Security, LLC
+# Copyright (c) 2022-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # GOST R 34.10-2012 and GOST R 34.11-2012 Algorithms

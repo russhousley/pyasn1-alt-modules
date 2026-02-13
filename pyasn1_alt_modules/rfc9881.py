@@ -3,13 +3,14 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2025, Vigil Security, LLC
+# Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # ML-DSA Algorithm for use in X.509 Certificats
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc9881.txt
+# https://www.rfc-editor.org/errata/eid8699
 #
 
 from pyasn1.type import constraint
@@ -134,7 +135,7 @@ class ML_DSA_65_PublicKey(univ.OctetString):
 
 
 class ML_DSA_87_PublicKey(univ.OctetString):
-    subtypeSpec = constraint.ValueSizeConstraint(2602, 2602)
+    subtypeSpec = constraint.ValueSizeConstraint(2592, 2592)
 
 
 # No need to update the Algorithm Identifier map or the S/MIME

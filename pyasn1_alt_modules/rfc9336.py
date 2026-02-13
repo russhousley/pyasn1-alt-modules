@@ -3,7 +3,7 @@
 #
 # Created by Russ Housley.
 #
-# Copyright (c) 2022-2025, Vigil Security, LLC
+# Copyright (c) 2022-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
 # Extended Key Usage (EKU) for Document Signing in X.509 Certificates
