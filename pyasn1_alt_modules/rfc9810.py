@@ -3,7 +3,8 @@
 #
 # Created by Russ Housley taking much from rfc9480.py.
 # Modified by Guiliano Lehmann to correct CertProfileValue, CRLSource,
-#   KemBMParameter, CertResponse and CertRepMessage.
+#   KemBMParameter, CertResponse, CertRepMessage, Challenge, and
+#   POPODecKeyChallContent.
 #
 # Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1_alt_modules_license.txt
