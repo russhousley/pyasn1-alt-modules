@@ -2,6 +2,7 @@
 # This file is part of pyasn1-alt-modules software.
 #
 # Created by Russ Housley.
+# Modified by Russ Housley to incorporate Errata 8750.
 #
 # Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
@@ -10,6 +11,7 @@
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc9763.txt
+# https://www.rfc-editor.org/errata/eid8750
 #
 
 from pyasn1.type import char
@@ -76,20 +78,15 @@ class RelatedCertificate(univ.Sequence):
 id_aa_relatedCertRequest = id_aa + (60, )
 
 
-class URI(char.IA5String):
+class UniformResourceIdentifier(char.IA5String):
     pass
-
-
-class UniformResourceIdentifiers(univ.SequenceOf):
-    componentType = URI()
-    subtypeSpec=constraint.ValueSizeConstraint(1, MAX)
 
 
 class RequesterCertificate(univ.Sequence):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('certID', IssuerAndSerialNumber()),
         namedtype.NamedType('requestTime', BinaryTime()),
-        namedtype.NamedType('locationInfo', UniformResourceIdentifiers()),
+        namedtype.NamedType('locationInfo', UniformResourceIdentifier()),
         namedtype.NamedType('signature', univ.BitString())
     )
 

@@ -1,7 +1,9 @@
 #
 # This file is part of pyasn1-alt-modules software.
 #
-# Created by Russ Housley
+# Created by Russ Housley.
+# Modified by Russ Housley to incorporate Errata 8750.
+#
 # Copyright (c) 2025-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
 #
@@ -21,20 +23,20 @@ from pyasn1_alt_modules import opentypemap
 
 class CertificationRequestTestCase(unittest.TestCase):
     pem_text = """\
-MIICcTCCAfcCAQAwcDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlZBMRAwDgYDVQQH
+MIICbzCCAfUCAQAwcDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAlZBMRAwDgYDVQQH
 EwdIZXJuZG9uMRAwDgYDVQQKEwdFeGFtcGxlMQ4wDAYDVQQDEwVBbGljZTEgMB4G
 CSqGSIb3DQEJARYRYWxpY2VAZXhhbXBsZS5jb20wdjAQBgcqhkjOPQIBBgUrgQQA
 IgNiAAT4zZ8HL+xEDpXWkoWp5xFMTz4u4Ae1nF6zXCYlmsEGD5vPu5hl9hDEjd1U
 HRgJIPoy3fJcWWeZ8FHCirICtuMgFisNscG/aTwKyDYOFDuqz/C2jyEwqgWCRyxy
-ohuJXtmgggEGMIIBAgYLKoZIhvcNAQkQAjwxgfIwge8wVzBRMQswCQYDVQQGEwJV
+ohuJXtmgggEEMIIBAAYLKoZIhvcNAQkQAjwxgfAwge0wVzBRMQswCQYDVQQGEwJV
 UzELMAkGA1UECBMCVkExEDAOBgNVBAcTB0hlcm5kb24xEDAOBgNVBAoTB0V4YW1w
-bGUxETAPBgNVBAMTCEJvZ3VzIENBAgICmgIEZ+2IIzAlFiNodHRwczovL3JlcG8u
-ZXhhbXBsZS5jb20vbXljZXJ0LnA3YwNnADBkAjBhJnt/AN5PKuERkhLNg04UEDkM
-90wSayFvM6/dkvHvATT5EXEA0fgu9kxIS/6qDwkCMBqRmguBEYlMqRE5Ar6DT9Dg
-xYYZaRaOpcFR3fBrvuoUoQtjynQH7OEBQ0vWSoEHmTAKBggqhkjOPQQDAwNoADBl
-AjEAikPcXx+k7i2rRhd0sC+U4nRvoWbmaNqouskMTMFLhZR8lqy+Ue25oxjLKB80
-cL9BAjAA8qyl4itjffQIbI2cXBP2h5yZJ91/5lNf5Qp7ogi+1M1uIMVJaRQ++sHC
-/N8yKhw=
+bGUxETAPBgNVBAMTCEJvZ3VzIENBAgICmgIEZ+2IIxYjaHR0cHM6Ly9yZXBvLmV4
+YW1wbGUuY29tL215Y2VydC5wN2MDZwAwZAIwYSZ7fwDeTyrhEZISzYNOFBA5DPdM
+EmshbzOv3ZLx7wE0+RFxANH4LvZMSEv+qg8JAjAakZoLgRGJTKkROQK+g0/Q4MWG
+GWkWjqXBUd3wa77qFKELY8p0B+zhAUNL1kqBB5kwCgYIKoZIzj0EAwMDaAAwZQIx
+AIpD3F8fpO4tq0YXdLAvlOJ0b6Fm5mjaqLrJDEzBS4WUfJasvlHtuaMYyygfNHC/
+QQIwAPKspeIrY330CGyNnFwT9oecmSfdf+ZTX+UKe6IIvtTNbiDFSWkUPvrBwvzf
+Mioc
 """
 
     def setUp(self):
@@ -58,7 +60,7 @@ cL9BAjAA8qyl4itjffQIbI2cXBP2h5yZJ91/5lNf5Qp7ogi+1M1uIMVJaRQ++sHC
                 self.assertFalse(rest)
                 self.assertTrue(rc.prettyPrint())
                 self.assertEqual(attr['values'][0], der_encoder(rc))
-                self.assertIn("p7c", rc['locationInfo'][0])
+                self.assertIn("p7c", rc['locationInfo'])
                 found = True
 
         self.assertTrue(found)
@@ -82,9 +84,9 @@ cL9BAjAA8qyl4itjffQIbI2cXBP2h5yZJ91/5lNf5Qp7ogi+1M1uIMVJaRQ++sHC
 
 class CertificationExtensionTestCase(unittest.TestCase):
     pem_text = """\
-MIIDWTCCAt+gAwIBAgIJAKWzVCgbsG5VMAoGCCqGSM49BAMDMD8xCzAJBgNVBAYT
+MIIDWjCCAt+gAwIBAgIJAKWzVCgbsG5cMAoGCCqGSM49BAMDMD8xCzAJBgNVBAYT
 AlVTMQswCQYDVQQIDAJWQTEQMA4GA1UEBwwHSGVybmRvbjERMA8GA1UECgwIQm9n
-dXMgQ0EwHhcNMjUwNDA3MjE0OTA3WhcNMjYwNDA3MjE0OTA3WjBOMQswCQYDVQQG
+dXMgQ0EwHhcNMjYwMjI2MTYwMjA2WhcNMjcwMjI2MTYwMjA2WjBOMQswCQYDVQQG
 EwJVUzELMAkGA1UECBMCVkExEDAOBgNVBAcTB0hlcm5kb24xEDAOBgNVBAoTB0V4
 YW1wbGUxDjAMBgNVBAMTBUtlaXRoMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAErg7y
 rZBUSfy3PIIjWV1+A/UOuVYyp3jTIKnaayr2HsKA+Go46023Hgm6fgZJC9YfGXRj
@@ -95,11 +97,11 @@ CAwCVkExEDAOBgNVBAcMB0hlcm5kb24xETAPBgNVBAoMCEJvZ3VzIENBggkA6JHW
 BpFPzvIwDAYDVR0TAQH/BAIwADALBgNVHQ8EBAMCBsAwHAYDVR0RBBUwE4ERa2Vp
 dGhAZXhhbXBsZS5jb20wNAYIKwYBBQUHAQEEKDAmMCQGCCsGAQUFBzABhhhodHRw
 Oi8vb2NzcC5leGFtcGxlLmNvbS8wTQYIKwYBBQUHASQEQTA/MAsGCWCGSAFlAwQC
-AgQw1waLIBpBI+G8TFWN/QwSgRtbm+vLYR3LDeqXla8BDhO/zGp9QJE+9I4SGIvF
-1oE0MEIGCWCGSAGG+EIBDQQ1FjNUaGlzIGNlcnRpZmljYXRlIGNhbm5vdCBiZSB0
-cnVzdGVkIGZvciBhbnkgcHVycG9zZS4wCgYIKoZIzj0EAwMDaAAwZQIxAIWf14uO
-eX39ND1Bx+HDMy40GPZSMASoe6dnxVFgphdzvUnPARM2Qpm/9xvILLj0EgIwIt44
-0y/25Xe4wVX+6kR45V8TbByxs4bYCQcgWfeiw9Bu15yi8BYDhmgAK7LgZd6l
+AgQwL+Yu8NtMbhUzfzN/O9f0imarUq3aNBeFcTb+/kgJ2q7Fic8zQgfl3SdsBJJ+
+Rd51MEIGCWCGSAGG+EIBDQQ1FjNUaGlzIGNlcnRpZmljYXRlIGNhbm5vdCBiZSB0
+cnVzdGVkIGZvciBhbnkgcHVycG9zZS4wCgYIKoZIzj0EAwMDaQAwZgIxAIDoGcpY
+3Os3pLRQxyZKTluY4vEB1IzO+YLjMQrP3rklU+pGKSoVpFJzjmZFNNqU7AIxAJSO
+ZUOFtABE7D8rgeMDc0FmJJK1kOIa+QbRSzzrIIyXCCOeb2u0pHjsM9eVHM9Neg==
 """
 
     def setUp(self):

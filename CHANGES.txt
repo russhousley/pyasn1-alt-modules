@@ -1,3 +1,8 @@
+Revision 0.4.10, released XX-XXX-2026
+-------------------------------------
+- Added RFC9939 for PKCS #8 Private-Key Information Content Types
+- Updated RFC9763 for Errata 8750
+
 Revision 0.4.9, released 13-FEB-2026
 ------------------------------------
 - Added RFC9935 for Algorithm Identifiers for ML-KEM in Certificates
@@ -5,7 +10,6 @@ Revision 0.4.9, released 13-FEB-2026
 - Corrected problems in rfc9480.py identified by Guiliano Lehmann
 - Corrected problems in rfc9810.py identified by Guiliano Lehmann
 - Added RFC9925 for Unsigned X.509 Certificates
-- Added RFC9939 for PKCS #8 Private-Key Information Content Types
 
 Revision 0.4.8, released 04-FEB-2026
 ------------------------------------
