@@ -302,12 +302,12 @@ class PollRepContent(univ.SequenceOf):
 
 class CertStatus(univ.Sequence):
     componentType = namedtype.NamedTypes(
+        namedtype.NamedType('certHash', univ.OctetString()),
+        namedtype.NamedType('certReqId', univ.Integer()),
+        namedtype.OptionalNamedType('statusInfo', PKIStatusInfo()),
         namedtype.OptionalNamedType('hashAlg',
                                     AlgorithmIdentifier().subtype(explicitTag=tag.Tag(
                                         tag.tagClassContext, tag.tagFormatSimple, 0))),
-        namedtype.NamedType('certHash', univ.OctetString()),
-        namedtype.NamedType('certReqId', univ.Integer()),
-        namedtype.OptionalNamedType('statusInfo', PKIStatusInfo())
     )
 
 
