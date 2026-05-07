@@ -1,3 +1,7 @@
+Revision 0.4.11, released XX-XXX-202X
+-------------------------------------
+- Added RFC9977 for Publishing End-Site Prefix Lengths
+
 Revision 0.4.10, released 13-APR-2026
 -------------------------------------
 - Added RFC9939 for PKCS #8 Private-Key Information Content Types
