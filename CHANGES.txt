@@ -2,6 +2,8 @@ Revision 0.4.11, released XX-XXX-202X
 -------------------------------------
 - Added RFC9977 for Publishing End-Site Prefix Lengths
 - Added RFC10002 for Certificate Management over CMS (CMC)
+- Include synonyms in RFC10002 for long standing typos in the Internet-Draft
+
 
 Revision 0.4.10, released 13-APR-2026
 -------------------------------------
