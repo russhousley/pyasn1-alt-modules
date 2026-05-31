@@ -391,12 +391,26 @@ class TaggedContentInfo(univ.Sequence):
     )
 
 
-class IdentifyProofV2(univ.Sequence):
+class IdentityProofV2(univ.Sequence):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('proofAlgID', rfc5280.AlgorithmIdentifier()),
         namedtype.NamedType('macAlgId', rfc5280.AlgorithmIdentifier()),
         namedtype.NamedType('witness', univ.OctetString())
     )
+
+
+class IdentifyProofV2(IdentityProofV2):
+    # Included due to long standing typo in the Internet-Draft
+    pass
+
+
+class IdentityProof(univ.OctetString):
+    pass
+
+
+class IdentifyProof(IdentityProof):
+    # Included due to long standing typo in the Internet-Draft
+    pass
 
 
 class CMCPublicationInfo(univ.Sequence):
@@ -499,11 +513,16 @@ class ExtensionReq(univ.SequenceOf):
     sizeSpec = constraint.ValueSizeConstraint(1, MAX)
 
 
-class LraPopWitness(univ.Sequence):
+class LraPOPWitness(univ.Sequence):
     componentType = namedtype.NamedTypes(
         namedtype.NamedType('pkiDataBodyid', BodyPartID()),
         namedtype.NamedType('bodyIds', univ.SequenceOf(componentType=BodyPartID()))
     )
+
+
+class LraPopWitness(LraPOPWitness):
+    # Included due to long standing typo in the Internet-Draft
+    pass
 
 
 class GetCert(univ.Sequence):
@@ -543,8 +562,8 @@ _cmcControlAttributesMapUpdate = {
     id_cmc_statusInfo: CMCStatusInfo(),
     id_cmc_statusInfoV2: CMCStatusInfoV2(),
     id_cmc_identification: char.UTF8String(),
-    id_cmc_identityProof: univ.OctetString(),
-    id_cmc_identityProofV2: IdentifyProofV2(),
+    id_cmc_identityProof: IdentityProof(),
+    id_cmc_identityProofV2: IdentityProofV2(),
     id_cmc_dataReturn: univ.OctetString(),
     id_cmc_transactionId: univ.Integer(),
     id_cmc_senderNonce: univ.OctetString(),
@@ -552,7 +571,7 @@ _cmcControlAttributesMapUpdate = {
     id_cmc_addExtensions: AddExtensions(),
     id_cmc_encryptedPOP: EncryptedPOP(),
     id_cmc_decryptedPOP: DecryptedPOP(),
-    id_cmc_lraPOPWitness: LraPopWitness(),
+    id_cmc_lraPOPWitness: LraPOPWitness(),
     id_cmc_getCert: GetCert(),
     id_cmc_getCRL: GetCRL(),
     id_cmc_revokeRequest: RevokeRequest(),
