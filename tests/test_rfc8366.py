@@ -1,0 +1,127 @@
+#
+# This file is part of pyasn1-alt-modules software.
+#
+# Created by Russ Housley
+# Copyright (c) 2026, Vigil Security, LLC
+# License: http://vigilsec.com/pyasn1-alt-modules-license.txt
+#
+import sys
+import unittest
+
+from pyasn1.codec.der.decoder import decode as der_decoder
+from pyasn1.codec.der.encoder import encode as der_encoder
+
+from pyasn1_alt_modules import pem
+from pyasn1_alt_modules import rfc5652
+from pyasn1_alt_modules import rfc8366
+from pyasn1_alt_modules import opentypemap
+
+
+class ANIMAJSONVoucherTestCase(unittest.TestCase):
+    pem_text = """\
+MIINfgYJKoZIhvcNAQcCoIINbzCCDWsCAQMxDTALBglghkgBZQMEAgEwggTDBgsq
+hkiG9w0BCRABKKCCBLIEggSuewogICJpZXRmLXZvdWNoZXI6dm91Y2hlciI6IHsK
+ICAgICJjcmVhdGVkLW9uIjogIjIwMjYwNjE4VDEyMjEyMFoiLAogICAgImV4cGly
+ZXMtb24iOiAiMjAyNjA3MDJUMTIyMTIwWiIsCiAgICAiYXNzZXJ0aW9uIjogInZl
+cmlmaWVkIiwKICAgICJzZXJpYWwtbnVtYmVyIjogImV4LXNlcmlhbC1udW1iZXIi
+LAogICAgImlkZXZpZC1pc3N1ZXIiOiAiMzYwOTdFM0RFQTM5MzE2RUE0Q0U1QzY5
+NUJFOTA1RTc4QUYyRkI1QSIsCiAgICAicGlubmVkLWRvbWFpbi1jZXJ0IjogIk1J
+SUNhakNDQWhHZ0F3SUJBZ0lCQVRBS0JnZ3Foa2pPUFFRREFqQm9NUXN3Q1FZRFZR
+UUdFd0pWVXpFUk1BOEdBMVVFQ0F3SVEyOXNiM0poWkc4eEpUQWpCZ05WQkFvTUhG
+SmhibVJ2YlNCRFpYSjBhV1pwWTJGMFpTQkJkWFJvYjNKcGRIa3hIekFkQmdOVkJB
+TU1GbEpoYm1SdmJWOURRVjlVY25WemRGOUJibU5vYjNJd0lCY05Nall3TmpFNE1U
+WXlNVEl3V2hnUE9UazVPVEV5TXpFeU16VTVOVGxhTUdneEN6QUpCZ05WQkFZVEFs
+VlRNUkV3RHdZRFZRUUlEQWhEYjJ4dmNtRmtiekVsTUNNR0ExVUVDZ3djVW1GdVpH
+OXRJRU5sY25ScFptbGpZWFJsSUVGMWRHaHZjbWwwZVRFZk1CMEdBMVVFQXd3V1Vt
+RnVaRzl0WDBOQlgxUnlkWE4wWDBGdVkyaHZjakJaTUJNR0J5cUdTTTQ5QWdFR0ND
+cUdTTTQ5QXdFSEEwSUFCSFVLc0JBaFVOUHEvbFJLSFp6aUF0WG1DWDd1cVR4Mi8v
+NWpNVmVqQW5RcGEvRjFYcG16SUxPclg2S1FZUzY4KzIzS3VUSG96WTkvTnpKR2ZS
+ZFMrK3lqZ2Frd2dhWXdEd1lEVlIwVEFRSC9CQVV3QXdFQi96QU9CZ05WSFE4QkFm
+OEVCQU1DQVFZd0hRWURWUjBPQkJZRUZFWUQyWGdLU0diZ3A1U0JZNkp5RUdiUFlQ
+MjZNQjhHQTFVZEl3UVlNQmFBRkVZRDJYZ0tTR2JncDVTQlk2SnlFR2JQWVAyNk1F
+TUdBMVVkSHdROE1Eb3dPS0Eyb0RTR01taDBkSEE2THk5amNtd3VjbUZ1Wkc5dExX
+TmhMbU52YlQ5allUMVNZVzVrYjIxZlEwRmZWSEoxYzNSZlFXNWphRzl5TUFvR0ND
+cUdTTTQ5QkFNQ0EwY0FNRVFDSURsb0FRSVg3a21CZnpZWFh5VFNOMkUxT3IyTnhz
+bkxtdzBGR0FoUzlYMnBBaUJpSStVbHZwUkJKL09VL2JPTUFNOFJIS2RmMVZJMnZq
+THlRL0pNdFpEeTNBPT0iLAogICAgImRvbWFpbi1jZXJ0LXJldm9jYXRpb24tY2hl
+Y2tzIjogInRydWUiLAogICAgImxhc3QtcmVuZXdhbC1kYXRlIjogIjIwMjcwNjE4
+VDEyMjEyMFoiCiAgfQp9CqCCB6UwggKIMIICLaADAgECAgEBMAoGCCqGSM49BAMC
+MHcxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMREwDwYDVQQKDAhW
+ZW5kb3IgWDEdMBsGA1UECwwUQ2VydGlmaWNhdGUgSXNzdWFuY2UxITAfBgNVBAMM
+GFZvdWNoZXJfSW50ZXJtZWRpYXRlMl9DQTAgFw0yNjA2MTgxNjIxMjBaGA85OTk5
+MTIzMTIzNTk1OVowdzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWEx
+ETAPBgNVBAoMCFZlbmRvciBYMR0wGwYDVQQLDBRDZXJ0aWZpY2F0ZSBJc3N1YW5j
+ZTEhMB8GA1UEAwwYVm91Y2hlcl9JbnRlcm1lZGlhdGUzX0NBMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAETDaJOeJBwts4/OVXiT/pR85Yu5Jm15UnSgYAtKU9pKJd
+xX8bVoQA+jgZnwFmyNoO3J1l+m/SeXunnKFoMwso2KOBpzCBpDAMBgNVHRMBAf8E
+AjAAMA4GA1UdDwEB/wQEAwIHgDAdBgNVHQ4EFgQUfB0d3wx5YUVg/8txsjgDPyOU
+KpcwHwYDVR0jBBgwFoAUgpcmOy+Vxn4lTKj7BDhPy8rMnlgwRAYDVR0fBD0wOzA5
+oDegNYYzaHR0cDovL2NybC52ZW5kb3IteC5uZXQ/Y2E9Vm91Y2hlcl9JbnRlcm1l
+ZGlhdGUyX0NBMAoGCCqGSM49BAMCA0kAMEYCIQD64Gxt6QRK/TMqv9A7x6wPoZAo
+/pwAuVvY0CCSjazWuwIhAP2kR5dmqg+vzLlNitxHonTAebVcAQOel5wxVtRZHfQ5
+MIICiDCCAi6gAwIBAgIBAjAKBggqhkjOPQQDAjB2MQswCQYDVQQGEwJVUzETMBEG
+A1UECAwKQ2FsaWZvcm5pYTERMA8GA1UECgwIVmVuZG9yIFgxHTAbBgNVBAsMFENl
+cnRpZmljYXRlIElzc3VhbmNlMSAwHgYDVQQDDBdWb3VjaGVyX1RydXN0X0FuY2hv
+cl9DQTAgFw0yNjA2MTgxNjIxMjBaGA85OTk5MTIzMTIzNTk1OVowdzELMAkGA1UE
+BhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExETAPBgNVBAoMCFZlbmRvciBYMR0w
+GwYDVQQLDBRDZXJ0aWZpY2F0ZSBJc3N1YW5jZTEhMB8GA1UEAwwYVm91Y2hlcl9J
+bnRlcm1lZGlhdGUxX0NBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEL0aq7JC9
+6ySbZVYiF7Wt7Fb1Vmn/XVBEySDCw6O+aADNV6nPIh9vGowfmnK66urfNIpFL0l8
+iwg7UfKQNkYdz6OBqTCBpjAdBgNVHQ4EFgQURMuI0fYVx7Q8ag7+DtWGq+7HTlMw
+HwYDVR0jBBgwFoAU94lm+LTFRJh2KYHLjHkFdvV41XEwDwYDVR0TAQH/BAUwAwEB
+/zAOBgNVHQ8BAf8EBAMCAQYwQwYDVR0fBDwwOjA4oDagNIYyaHR0cDovL2NybC52
+ZW5kb3IteC5uZXQ/Y2E9Vm91Y2hlcl9UcnVzdF9BbmNob3JfQ0EwCgYIKoZIzj0E
+AwIDSAAwRQIhALYdz97xI8zc/CEBVQY5JKNtEQvEl6d38qunIuMfodXCAiBpVkmm
+1PQFHFFdt9OlKDmHPt215XJZYi5vqFEwZWq18TCCAokwggIwoAMCAQICAQEwCgYI
+KoZIzj0EAwIwdzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExETAP
+BgNVBAoMCFZlbmRvciBYMR0wGwYDVQQLDBRDZXJ0aWZpY2F0ZSBJc3N1YW5jZTEh
+MB8GA1UEAwwYVm91Y2hlcl9JbnRlcm1lZGlhdGUxX0NBMCAXDTI2MDYxODE2MjEy
+MFoYDzk5OTkxMjMxMjM1OTU5WjB3MQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs
+aWZvcm5pYTERMA8GA1UECgwIVmVuZG9yIFgxHTAbBgNVBAsMFENlcnRpZmljYXRl
+IElzc3VhbmNlMSEwHwYDVQQDDBhWb3VjaGVyX0ludGVybWVkaWF0ZTJfQ0EwWTAT
+BgcqhkjOPQIBBggqhkjOPQMBBwNCAARabpiCwRcHLPrDyMrhl/wGm1X+5Pp5xOm9
+qUuEmMB1LJHFLGcen4R8T92TLWa/DM+XMpsf3SEv2Z7K9rke+7Ljo4GqMIGnMA8G
+A1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgEGMB0GA1UdDgQWBBSClyY7L5XG
+fiVMqPsEOE/LysyeWDAfBgNVHSMEGDAWgBREy4jR9hXHtDxqDv4O1Yar7sdOUzBE
+BgNVHR8EPTA7MDmgN6A1hjNodHRwOi8vY3JsLnZlbmRvci14Lm5ldD9jYT1Wb3Vj
+aGVyX0ludGVybWVkaWF0ZTFfQ0EwCgYIKoZIzj0EAwIDRwAwRAIgXZh7IGNEt6U0
+444RS7AtOQDNFcHllt/mnAYJeX4stO8CIBlNME1J4d1OE8U4H+lnFT+Qlxufmrxl
+IY7Q4kOi6i5gMYHmMIHjAgEBMHwwdzELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNh
+bGlmb3JuaWExETAPBgNVBAoMCFZlbmRvciBYMR0wGwYDVQQLDBRDZXJ0aWZpY2F0
+ZSBJc3N1YW5jZTEhMB8GA1UEAwwYVm91Y2hlcl9JbnRlcm1lZGlhdGUyX0NBAgEB
+MAsGCWCGSAFlAwQCATAKBggqhkjOPQQDAgRHMEUCIQDS8uIpisyW1z5aBVJQhvPt
+bdbeL/5H9xI4sktAYa++EAIgMRPgM5ylPkL+4sl1BSRfeSW4FbXdrWWrrMc7BdoI
+L60=
+"""
+
+    def setUp(self):
+        self.asn1Spec = rfc5652.ContentInfo()
+
+    def testDerCodec(self):
+        cmsContentTypesMap = opentypemap.get('cmsContentTypesMap')
+        self.assertIn(rfc8366.id_ct_animaJSONVoucher, cmsContentTypesMap)
+
+        substrate = pem.readBase64fromText(self.pem_text)
+        asn1Object, rest = der_decoder (substrate, asn1Spec=self.asn1Spec)
+        self.assertFalse(rest)
+        self.assertTrue(asn1Object.prettyPrint())
+        self.assertEqual(substrate, der_encoder(asn1Object))
+
+        self.assertEqual(rfc5652.id_signedData, asn1Object['contentType'])
+        sd, rest = der_decoder(asn1Object['content'],
+            asn1Spec=rfc5652.SignedData())
+        self.assertFalse(rest)
+        self.assertTrue(sd.prettyPrint())
+        self.assertEqual(asn1Object['content'], der_encoder(sd))
+
+        self.assertEqual(rfc8366.id_ct_animaJSONVoucher,
+            sd['encapContentInfo']['eContentType'])
+        self.assertTrue(
+            sd['encapContentInfo']['eContent'].asOctets().startswith(b'{'))
+
+
+suite = unittest.TestLoader().loadTestsFromModule(sys.modules[__name__])
+
+if __name__ == '__main__':
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    sys.exit(not result.wasSuccessful())
