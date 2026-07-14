@@ -4,6 +4,7 @@ Revision 0.4.11, released XX-XXX-202X
 - Added RFC10002 for Certificate Management over CMS (CMC)
 - Include synonyms in RFC10002 for long standing typos in the Internet-Draft
 - Added RFC8366 for ANIMA Voucher Artifact for Bootstrapping Protocols
+- Added RFC9999 for RATS Conceptual Messages Wrapper (CMW)
 
 Revision 0.4.10, released 13-APR-2026
 -------------------------------------
