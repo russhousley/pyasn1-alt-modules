@@ -5,6 +5,7 @@ Revision 0.4.11, released XX-XXX-202X
 - Include synonyms in RFC10002 for long standing typos in the Internet-Draft
 - Added RFC8366 for ANIMA Voucher Artifact for Bootstrapping Protocols
 - Added RFC9999 for RATS Conceptual Messages Wrapper (CMW)
+- Correct typo in RFC9909
 
 Revision 0.4.10, released 13-APR-2026
 -------------------------------------
