@@ -42,7 +42,7 @@ id_slh_dsa_shake_192f = rfc9814.id_slh_dsa_shake_192f
 
 id_slh_dsa_shake_256s = rfc9814.id_slh_dsa_shake_256s
 
-id_slh_dsa_shake_256s = rfc9814.id_slh_dsa_shake_256s
+id_slh_dsa_shake_256f = rfc9814.id_slh_dsa_shake_256f
 
 sa_slh_dsa_sha2_128s = rfc9814.sa_slh_dsa_sha2_128s
 
