@@ -15,14 +15,14 @@ jobs:
     name: Build pure-Python wheel and source distribution
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Build wheel
         run: pipx run build
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           path: dist/*
 
@@ -31,10 +31,10 @@ jobs:
     name: Test pure-Python wheel
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: artifact
           path: dist
@@ -51,12 +51,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'release' && github.event.action == 'published' || github.event_name == 'workflow_dispatch'
     environment:
-      name: "${{ github.event.name == 'release' && 'pypi' || 'testpypi' }}"
-      url: "${{ github.event.name == 'release' && 'https://pypi.org/p/pyasn1-alt-modules' || 'https://test.pypi.org/p/pyasn1-alt-modules' }}"
+      name: "${{ github.event_name == 'release' && 'pypi' || 'testpypi' }}"
+      url: "${{ github.event_name == 'release' && 'https://pypi.org/p/pyasn1-alt-modules' || 'https://test.pypi.org/p/pyasn1-alt-modules' }}"
     permissions:
       id-token: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: artifact
           path: dist
