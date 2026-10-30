@@ -20,7 +20,7 @@ from pyasn1_alt_modules import opentypemap
 
 class SignedMessageTestCase(unittest.TestCase):
     signed_message_pem_text = """\
-MIIEyAYJKoZIhvcNAQcCoIIEuTCCBLUCAQExDTALBglghkgBZQMEAgIwUQYJKoZI
+MIIEygYJKoZIhvcNAQcCoIIEuzCCBLcCAQExDTALBglghkgBZQMEAgIwUQYJKoZI
 hvcNAQcBoEQEQkNvbnRlbnQtVHlwZTogdGV4dC9wbGFpbg0KDQpXYXRzb24sIGNv
 bWUgaGVyZSAtIEkgd2FudCB0byBzZWUgeW91LqCCAnwwggJ4MIIB/qADAgECAgkA
 pbNUKBuwbjswCgYIKoZIzj0EAwMwPzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAlZB
@@ -35,17 +35,17 @@ NRYzVGhpcyBjZXJ0aWZpY2F0ZSBjYW5ub3QgYmUgdHJ1c3RlZCBmb3IgYW55IHB1
 cnBvc2UuMB0GA1UdDgQWBBTEuloOPnrjPIGw9AKqaLsW4JYONTAfBgNVHSMEGDAW
 gBTyNds0BNqlVfK9aQOZsGLs4hUIwTAKBggqhkjOPQQDAwNoADBlAjBjuR/RNbgL
 3kRhmn+PJTeKaL9sh/oQgHOYTgLmSnv3+NDCkhfKuMNoo/tHrkmihYgCMQC94Mae
-rDIrQpi0IDh+v0QSAv9rMife8tClafXWtDwwL8MS7oAh0ymT446Uizxx3PUxggHM
-MIIByAIBATBMMD8xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJWQTEQMA4GA1UEBwwH
+rDIrQpi0IDh+v0QSAv9rMife8tClafXWtDwwL8MS7oAh0ymT446Uizxx3PUxggHO
+MIIBygIBATBMMD8xCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJWQTEQMA4GA1UEBwwH
 SGVybmRvbjERMA8GA1UECgwIQm9ndXMgQ0ECCQCls1QoG7BuOzALBglghkgBZQME
-AgKggfIwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcN
-MTkwNTI5MTgyMzE5WjAoBgkqhkiG9w0BCTQxGzAZMAsGCWCGSAFlAwQCAqEKBggq
-hkjOPQQDAzA/BgkqhkiG9w0BCQQxMgQwtuQipP2CZx7U96rGbUT06LC5jVFYccZW
-5/CaNvpcrOPiChDm2vI3m4k300z5mSZsME0GCyqGSIb3DQEJEAIBMT4wPAQgx08h
-D2QnVwj1DoeRELNtdZ0PffW4BQIvcwwVc/goU6OAAQEwFTATgRFhbGljZUBleGFt
-cGxlLmNvbTAKBggqhkjOPQQDAwRnMGUCMQChIMyN1nTN+LLQcYJuhWT297vSKMDK
-fIUedSwWYrcSnSa1pq2s3Wue+pNBfecEjYECMGrUNu1UpWdafEJulP9Vz76qOPMa
-5V/AnTEV5zkmzRle8sffN+nQ+SGkoos5zpI1kA==
+AgKggfQwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcN
+MTkwNTI5MTgyMzE5WjAqBgsqhkiG9w0BCRACNDEbMBkwCwYJYIZIAWUDBAICoQoG
+CCqGSM49BAMDMD8GCSqGSIb3DQEJBDEyBDC25CKk/YJnHtT3qsZtRPTosLmNUVhx
+xlbn8Jo2+lys4+IKEOba8jebiTfTTPmZJmwwTQYLKoZIhvcNAQkQAgExPjA8BCDH
+TyEPZCdXCPUOh5EQs211nQ999bgFAi9zDBVz+ChTo4ABATAVMBOBEWFsaWNlQGV4
+YW1wbGUuY29tMAoGCCqGSM49BAMDBGcwZQIxAJUE2kP9wgCxvLxTOsCDMWp684BB
+SjOVSXFguycbenr2jYPnXxZjv9I1fMEy4rI6ZQIwP4tnG6wneS3WUrYCuLyG3J0T
+uAZ6efsrPmc/ZkFwGpkQDnQ94X5wLnr9B4Tqv3MG
 """
 
     def setUp(self):
@@ -65,17 +65,21 @@ fIUedSwWYrcSnSa1pq2s3Wue+pNBfecEjYECMGrUNu1UpWdafEJulP9Vz76qOPMa
         self.assertFalse(rest)
         self.assertTrue(sd.prettyPrint())
         self.assertEqual(asn1Object['content'], der_encoder(sd))
-       
+
+        found = False
         for sa in sd['signerInfos'][0]['signedAttrs']:
             sat = sa['attrType']
             sav0 = sa['attrValues'][0]
 
-            if sat in rfc6211.id_aa_cmsAlgorithmProtect:
+            if sat == rfc6211.id_aa_cmsAlgorithmProtect:
                 sav, rest = der_decoder(sav0,
                     asn1Spec=rfc6211.CMSAlgorithmProtection())
                 self.assertFalse(rest)
                 self.assertTrue(sav.prettyPrint())
                 self.assertEqual(sav0, der_encoder(sav))
+                found = True
+
+        self.assertTrue(found)
 
     def testOpenTypes(self):
         substrate = pem.readBase64fromText(self.signed_message_pem_text)
@@ -101,6 +105,7 @@ fIUedSwWYrcSnSa1pq2s3Wue+pNBfecEjYECMGrUNu1UpWdafEJulP9Vz76qOPMa
         self.assertIn(ect, cmsContentTypesMap)
         self.assertEqual(rfc5652.id_data, ect)
 
+        found = False
         for sa in sd['signerInfos'][0]['signedAttrs']:
             if sa['attrType'] == rfc6211.id_aa_cmsAlgorithmProtect:
                 self.assertIn(sa['attrType'], cmsAttributesMap)
@@ -113,6 +118,9 @@ fIUedSwWYrcSnSa1pq2s3Wue+pNBfecEjYECMGrUNu1UpWdafEJulP9Vz76qOPMa
                     digest_oid, sav0['digestAlgorithm']['algorithm'])
                 self.assertEqual(
                     sig_oid, sav0['signatureAlgorithm']['algorithm'])
+                found = True
+
+        self.assertTrue(found)
 
 
 suite = unittest.TestLoader().loadTestsFromModule(sys.modules[__name__])
