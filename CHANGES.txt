@@ -7,7 +7,8 @@ Revision 0.4.11, released XX-XXX-202X
 - Added RFC9999 for RATS Conceptual Messages Wrapper (CMW)
 - Correct typo in RFC9909
 - Added RFC10031 for Media Access Control (MAC) Addresses in X.509 Certificates
-- Assed RFC10073 for Composite ML-DSA Signatures for X.509 PKI
+- Added RFC10073 for Composite ML-DSA Signatures in X.509 PKI
+- Added RFC10082 for Composite ML-DSA Signatures in CMS
 
 Revision 0.4.10, released 13-APR-2026
 -------------------------------------
