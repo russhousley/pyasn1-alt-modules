@@ -10,6 +10,7 @@
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc10002.txt
+# https://errata.rfc-editor.org/eid9155/
 #
 
 from pyasn1.type import char

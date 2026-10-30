@@ -11,6 +11,7 @@ Revision 0.4.11, released XX-XXX-202X
 - Added RFC10082 for Composite ML-DSA Signatures in CMS
 - Corrected RFC6211 for Errata 9144, which fixes the OID in this module
 - Updated RFC9909 to correct a typo; id_slh_dsa_shake_256f in now correct
+- Updated RFC10002 comments to show Errata 9155 is already addressed
 
 Revision 0.4.10, released 13-APR-2026
 -------------------------------------
