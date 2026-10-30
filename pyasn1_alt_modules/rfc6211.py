@@ -3,6 +3,7 @@
 #
 # Created by Russ Housley with assistance from asn1ate v.0.6.0.
 # Modified by Russ Housley to include the opentypemap manager.
+# Modified by Russ Housley for Errata 9144, which fixes the OID in this module.
 #
 # Copyright (c) 2019-2026, Vigil Security, LLC
 # License: http://vigilsec.com/pyasn1-alt-modules-license.txt
@@ -11,6 +12,7 @@
 #
 # ASN.1 source from:
 # https://www.rfc-editor.org/rfc/rfc6211.txt
+# https://errata.rfc-editor.org/eid9144/
 #
 
 from pyasn1.type import constraint
@@ -35,7 +37,7 @@ SignatureAlgorithmIdentifier = rfc5652.SignatureAlgorithmIdentifier
 
 # CMS Algorithm Protection attribute
 
-id_aa_cmsAlgorithmProtect = univ.ObjectIdentifier('1.2.840.113549.1.9.52')
+id_aa_cmsAlgorithmProtect = univ.ObjectIdentifier('1.2.840.113549.1.9.16.2.52')
 
 
 class CMSAlgorithmProtection(univ.Sequence):
@@ -64,6 +66,11 @@ CMSAlgorithmProtection.subtypeSpec = constraint.ConstraintsUnion(
 aa_cmsAlgorithmProtection = rfc5652.Attribute()
 aa_cmsAlgorithmProtection['attrType'] = id_aa_cmsAlgorithmProtect
 aa_cmsAlgorithmProtection['attrValues'][0] = CMSAlgorithmProtection()
+
+
+# Due to a mistake in RFC 6211, provide this alternate spelling
+
+id_aa_cmsAlgorithmProtection = id_aa_cmsAlgorithmProtect
 
 
 # Update the CMS Attributes Map
