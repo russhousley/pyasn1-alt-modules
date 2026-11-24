@@ -5,12 +5,11 @@ Revision 0.4.11, released XX-XXX-202X
 - Include synonyms in RFC10002 for long standing typos in the Internet-Draft
 - Added RFC8366 for ANIMA Voucher Artifact for Bootstrapping Protocols
 - Added RFC9999 for RATS Conceptual Messages Wrapper (CMW)
-- Correct typo in RFC9909
 - Added RFC10031 for Media Access Control (MAC) Addresses in X.509 Certificates
 - Added RFC10073 for Composite ML-DSA Signatures in X.509 PKI
 - Added RFC10082 for Composite ML-DSA Signatures in CMS
 - Corrected RFC6211 for Errata 9144, which fixes the OID in this module
-- Updated RFC9909 to correct a typo; id_slh_dsa_shake_256f in now correct
+- Updated RFC9909 to correct a typo; id_slh_dsa_shake_256f is now correct
 - Updated RFC10002 comments to show Errata 9155 is already addressed
 - Added RFC10089 for STIR OCSP Telephone Number Query Extension
 
